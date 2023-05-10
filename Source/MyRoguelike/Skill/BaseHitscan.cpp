@@ -1,10 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BaseHitscan.h"
-#include "Components/SkeletalMeshComponent.h"
-#include "Kismet/GameplayStatics.h"
-#include "DrawDebugHelpers.h"
-#include "GameFramework/Character.h"
+
+#include <Components/SkeletalMeshComponent.h>
+#include <Kismet/GameplayStatics.h>
+#include <DrawDebugHelpers.h>
+#include <GameFramework/Character.h>
 
 // Sets default values
 ABaseHitscan::ABaseHitscan()
