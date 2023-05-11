@@ -46,7 +46,7 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		UnAiming();
 	}
 
-	if (IsRM)
+	if (IsRunningRM)
 	{
 		// 조준상태에서는 카메라 방향 = 폰 방향
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -55,7 +55,7 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		SetActorRotation(YawRotation);
 	}
 
-	if (IsQ)
+	if (IsRunningQ)
 	{
 		HandleCombatState();
 		CanJog = false;
@@ -65,7 +65,7 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		CanR = false;
 	}
 
-	if (IsE)
+	if (IsRunningE)
 	{
 		HandleCombatState();
 		CanJog = false;
@@ -77,7 +77,7 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		CanR = false;
 	}
 
-	if (IsR)
+	if (IsRunningR)
 	{
 		HandleCombatState();
 		CanJog = false;
@@ -132,7 +132,7 @@ void ABasePlayerCharacter::Dash()
 {
 	const FVector CurrentAcceleration = GetCharacterMovement()->GetCurrentAcceleration();
 	float CurrentAccelLength = CurrentAcceleration.SizeSquared();
-	if ((Controller != nullptr) && !IsDash && CanDash && !InCooldownDash && CurrentAccelLength > 0)
+	if ((Controller != nullptr) && !IsDash && CanDash && !IsCooldownDash && CurrentAccelLength > 0)
 	{
 		// const FRotator Rotation = Controller->GetControlRotation();
 		const FRotator Rotation = GetActorRotation();
@@ -148,19 +148,19 @@ void ABasePlayerCharacter::Dash()
 		//*후행 조건 설정부
 		IsDash = true;
 		CanDash = false;
-		InCooldownDash = true;
+		IsCooldownDash = true;
 
 		UnAiming();
 
 		SetZoomOutProp();
 
-		GetWorldTimerManager().SetTimer(DashHandle, this, &ABasePlayerCharacter::StopDashing, DashingTime, false);
+		GetWorldTimerManager().SetTimer(DashTHandle, this, &ABasePlayerCharacter::StopDashing, DashingTime, false);
 	}
 }
 void ABasePlayerCharacter::StopDashing()
 {
 	GetCharacterMovement()->StopMovementImmediately();
-	GetWorldTimerManager().SetTimer(DashHandle, this, &ABasePlayerCharacter::ResetDash, 0.2f, false);
+	GetWorldTimerManager().SetTimer(DashTHandle, this, &ABasePlayerCharacter::ResetDash, 0.2f, false);
 	GetCharacterMovement()->BrakingFrictionFactor = 2.f;
 }
 void ABasePlayerCharacter::ResetDash()
@@ -170,30 +170,30 @@ void ABasePlayerCharacter::ResetDash()
 	SetInCombatFalse();
 	IsJog = true;
 
-	GetWorldTimerManager().SetTimer(DashHandle, this, &ABasePlayerCharacter::ResetCooldownDash, ShiftCooldownTime, false);
+	GetWorldTimerManager().SetTimer(DashTHandle, this, &ABasePlayerCharacter::ResetCooldownDash, CooldownTimeLShift, false);
 }
 void ABasePlayerCharacter::ResetCooldownDash()
 {
-	InCooldownDash = false;
+	IsCooldownDash = false;
 }
 
 // (skill LM)
 void ABasePlayerCharacter::CombatLM()
 {
-	if (!IsLM && CanLM)
+	if (!IsRunningLM && CanLM)
 	{
 		CombatLMFire();
 		CanLM = false;
-		IsLM = true;
-		GetWorldTimerManager().SetTimer(LMFireHandle, this, &ABasePlayerCharacter::CombatLMFire, FireRate, true);
+		IsRunningLM = true;
+		GetWorldTimerManager().SetTimer(LMFireTHandle, this, &ABasePlayerCharacter::CombatLMFire, FireRate, true);
 	}
 }
 void ABasePlayerCharacter::CombatLMReleased()
 {
-	if (IsLM)
+	if (IsRunningLM)
 	{
-		IsLM = false;
-		GetWorldTimerManager().ClearTimer(LMFireHandle);
+		IsRunningLM = false;
+		GetWorldTimerManager().ClearTimer(LMFireTHandle);
 	}
 }
 void ABasePlayerCharacter::CombatLMDelay()
@@ -209,7 +209,7 @@ void ABasePlayerCharacter::CombatLMFire()
 	IsJog = false;
 	HandleCombatState();
 	CanLM = false;
-	GetWorldTimerManager().SetTimer(LMFireDelayHandle, this, &ABasePlayerCharacter::CombatLMDelay, FireRate, false);
+	GetWorldTimerManager().SetTimer(LMFireDelayTHandle, this, &ABasePlayerCharacter::CombatLMDelay, FireRate, false);
 	ShootPlay = true;
 	GetWorldTimerManager().SetTimerForNextTick(this, &ABasePlayerCharacter::SetShootPlayFalse);
 	if (DebugOnOff)
@@ -234,7 +234,7 @@ void ABasePlayerCharacter::ResetCooldownRM()
 }
 void ABasePlayerCharacter::Aiming()
 {
-	if (CanRM && !IsDash && !IsE) //*선행 조건 설정부
+	if (CanRM && !IsDash && !IsRunningE) //*선행 조건 설정부
 	{
 		//*기능 실현부
 		SetThisSpeed(400);
@@ -244,14 +244,14 @@ void ABasePlayerCharacter::Aiming()
 
 		//*후행 조건 설정부
 		IsJog = false;
-		IsRM = true;
+		IsRunningRM = true;
 		ZoomInterpTime = 10;
 		CanZoom = true;
 	}
 }
 void ABasePlayerCharacter::UnAiming()
 {
-	if (IsRM)
+	if (IsRunningRM)
 	{
 		//*기능 실현부
 		SetThisSpeed(600);
@@ -260,7 +260,7 @@ void ABasePlayerCharacter::UnAiming()
 		MyCameraLocation = FVector(0, 0, 55);
 
 		//*후행 조건 설정부
-		IsRM = false;
+		IsRunningRM = false;
 		ZoomInterpTime = 10;
 		CanZoom = true;
 	}
@@ -272,7 +272,7 @@ void ABasePlayerCharacter::CombatQ()
 	if (CanQ && !InCooldownQ)
 	{
 		//*선행 조건 설정부
-		IsQ = true;
+		IsRunningQ = true;
 		InCooldownQ = true;
 		HandleCombatState();
 		IsJog = false;
@@ -307,13 +307,13 @@ void ABasePlayerCharacter::CombatQ()
 		}
 
 		//*후행 조건 설정부
-		GetWorldTimerManager().SetTimer(QRuntimeHandle, this, &ABasePlayerCharacter::ReSetRuntimeQ, RuntimeQ, false);
-		GetWorldTimerManager().SetTimer(QCooldownHandle, this, &ABasePlayerCharacter::ResetCooldownQ, QCooldownTime, false);
+		GetWorldTimerManager().SetTimer(QRuntimeTHandle, this, &ABasePlayerCharacter::ReSetRuntimeQ, RuntimeQ, false);
+		GetWorldTimerManager().SetTimer(QCooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownQ, CooldownTimeQ, false);
 	}
 }
 void ABasePlayerCharacter::ReSetRuntimeQ()
 {
-	IsQ = false;
+	IsRunningQ = false;
 
 	CanJog = true;
 
@@ -328,9 +328,9 @@ void ABasePlayerCharacter::ResetCooldownQ()
 }
 float ABasePlayerCharacter::GetCooldownQPercent() const
 {
-	if (GetWorldTimerManager().GetTimerElapsed(QCooldownHandle) != -1)
+	if (GetWorldTimerManager().GetTimerElapsed(QCooldownTHandle) != -1)
 	{
-		return GetWorldTimerManager().GetTimerElapsed(QCooldownHandle) / QCooldownTime;
+		return GetWorldTimerManager().GetTimerElapsed(QCooldownTHandle) / CooldownTimeQ;
 	}
 	else
 	{
@@ -344,7 +344,7 @@ void ABasePlayerCharacter::CombatE()
 	if (CanE && !InCooldownE)
 	{
 		APlayerController *PlayerController = GetWorld()->GetFirstPlayerController();
-		if (!IsE) //*선행 조건 설정부
+		if (!IsRunningE) //*선행 조건 설정부
 		{
 			HandleCombatState();
 
@@ -365,12 +365,12 @@ void ABasePlayerCharacter::CombatE()
 			// PlayerController->SetControlRotation(FRotator(0, ThisRotation.Yaw, ThisRotation.Roll));
 
 			//*후행 조건 설정부
-			IsE = true;
+			IsRunningE = true;
 			CanZoom = true;
 			CanCameraControl = false;
 			DrawERange = true;
 		}
-		else if (IsE) //*선행 조건 설정부
+		else if (IsRunningE) //*선행 조건 설정부
 		{
 			//*기능 실현부
 			FHitResult HitResult = GetUnderCursorLocation();
@@ -397,10 +397,10 @@ void ABasePlayerCharacter::CombatE()
 			HandleCombatState();
 			CanJog = true;
 
-			IsE = false;
+			IsRunningE = false;
 			InCooldownE = true;
 			// GetWorldTimerManager().SetTimer(ERuntimeHandle, this, &ABasePlayerCharacter::ReSetRuntimeE, RuntimeE, false);
-			GetWorldTimerManager().SetTimer(ECooldownHandle, this, &ABasePlayerCharacter::ResetCooldownE, ECooldownTime, false);
+			GetWorldTimerManager().SetTimer(ECooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownE, CooldownTimeE, false);
 
 			CanDash = true;
 			CanRM = true;
@@ -412,7 +412,7 @@ void ABasePlayerCharacter::CombatE()
 }
 void ABasePlayerCharacter::ReSetRuntimeE()
 {
-	IsE = false;
+	IsRunningE = false;
 
 	CanJog = true;
 
@@ -441,9 +441,9 @@ FHitResult ABasePlayerCharacter::GetUnderCursorLocation() const
 }
 float ABasePlayerCharacter::GetCooldownEPercent() const
 {
-	if (GetWorldTimerManager().GetTimerElapsed(ECooldownHandle) != -1)
+	if (GetWorldTimerManager().GetTimerElapsed(ECooldownTHandle) != -1)
 	{
-		return GetWorldTimerManager().GetTimerElapsed(ECooldownHandle) / ECooldownTime;
+		return GetWorldTimerManager().GetTimerElapsed(ECooldownTHandle) / CooldownTimeE;
 	}
 	else
 	{
@@ -457,7 +457,7 @@ void ABasePlayerCharacter::CombatR()
 	if (CanR && !InCooldownR)
 	{
 		//*선행 조건 설정부
-		IsR = true;
+		IsRunningR = true;
 		InCooldownR = true;
 		IsJog = false;
 		HandleCombatState();
@@ -484,13 +484,13 @@ void ABasePlayerCharacter::CombatR()
 		}
 
 		//*후행 조건 설정부
-		GetWorldTimerManager().SetTimer(RRuntimeHandle, this, &ABasePlayerCharacter::ReSetRuntimeR, RuntimeR, false);
-		GetWorldTimerManager().SetTimer(RCooldownHandle, this, &ABasePlayerCharacter::ResetCooldownR, RCooldownTime, false);
+		GetWorldTimerManager().SetTimer(RRuntimeTHandle, this, &ABasePlayerCharacter::ReSetRuntimeR, RuntimeR, false);
+		GetWorldTimerManager().SetTimer(RCooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownR, CooldownTimeR, false);
 	}
 }
 void ABasePlayerCharacter::ReSetRuntimeR()
 {
-	IsR = false;
+	IsRunningR = false;
 
 	CanJog = true;
 
@@ -505,9 +505,9 @@ void ABasePlayerCharacter::ResetCooldownR()
 }
 float ABasePlayerCharacter::GetCooldownRPercent() const
 {
-	if (GetWorldTimerManager().GetTimerElapsed(RCooldownHandle) != -1)
+	if (GetWorldTimerManager().GetTimerElapsed(RCooldownTHandle) != -1)
 	{
-		return GetWorldTimerManager().GetTimerElapsed(RCooldownHandle) / RCooldownTime;
+		return GetWorldTimerManager().GetTimerElapsed(RCooldownTHandle) / CooldownTimeR;
 	}
 	else
 	{

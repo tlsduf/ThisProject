@@ -1,0 +1,15 @@
+전역변수의 머리에 G를 붙인다.
+
+타이머핸들 : NameTHandle
+핸들링함수 : HandleName
+
+스킬 핸들링 변수 규칙 (스킬이름을 가장마지막으로)
+bool IsRunningA 는 A의 동작시간 중인가를 판별하는 변수다.
+bool CanA 는 A실행가능여부이다. 기본적으로 IsRunningA가 true일 동안 다른 CanB는 false가 된다. 이 기능은 Tick에서 조건문으로 업데이트한다.
+bool IsCooldownA 는 A가 쿨다운 중인가를 판별하는 변수다.
+float RuntimeA 는 A의 동작시간이다.
+float CooldownTimeA 은 재사용대기시간이다. SetTimer의 인자로 활용한다.
+
++ 향상된 입력 업데이트로 인한 가능한 변수이름
+IsOngoingA
+IsTriggeredA

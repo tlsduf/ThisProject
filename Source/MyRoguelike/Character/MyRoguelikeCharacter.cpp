@@ -94,7 +94,7 @@ void AMyRoguelikeCharacter::Tick(float DeltaTime)
 	// 전투상태인지 판별하고, 전투상태라면 줌아웃
 	if (InCombat)
 	{
-		if (IsZoom)
+		if (IsZoomed)
 		{
 			SetZoomOutProp();
 		}
@@ -126,7 +126,6 @@ void AMyRoguelikeCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector 
 {
 	Jump();
 }
-
 void AMyRoguelikeCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	StopJumping();
@@ -158,7 +157,6 @@ void AMyRoguelikeCharacter::Move(const FInputActionValue &Value)
 		}
 	}
 }
-
 void AMyRoguelikeCharacter::Look(const FInputActionValue &Value)
 {
 	// input is a Vector2D
@@ -183,7 +181,6 @@ void AMyRoguelikeCharacter::SkillStarted(const uint8 &InSkillIndex)
 		Skills[InSkillIndex]->SkillStarted();
 	}
 }
-
 void AMyRoguelikeCharacter::SkillOngoing(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
@@ -191,7 +188,6 @@ void AMyRoguelikeCharacter::SkillOngoing(const uint8 &InSkillIndex)
 		Skills[InSkillIndex]->SkillOngoing();
 	}
 }
-
 void AMyRoguelikeCharacter::SkillTriggered(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
@@ -199,7 +195,6 @@ void AMyRoguelikeCharacter::SkillTriggered(const uint8 &InSkillIndex)
 		Skills[InSkillIndex]->SkillTriggered();
 	}
 }
-
 void AMyRoguelikeCharacter::SkillCompleted(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
@@ -207,7 +202,6 @@ void AMyRoguelikeCharacter::SkillCompleted(const uint8 &InSkillIndex)
 		Skills[InSkillIndex]->SkillCompleted();
 	}
 }
-
 void AMyRoguelikeCharacter::SkillCanceled(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
@@ -215,8 +209,6 @@ void AMyRoguelikeCharacter::SkillCanceled(const uint8 &InSkillIndex)
 		Skills[InSkillIndex]->SkillCanceled();
 	}
 }
-
-// !MyCode------------------------------------------------------
 
 // Debug #BP on/off
 void AMyRoguelikeCharacter::DebugActorRotation()
@@ -241,26 +233,26 @@ void AMyRoguelikeCharacter::DebugActorRotation()
 //================================================================
 void AMyRoguelikeCharacter::SetZoomInProp()
 {
-	if (!IsZoom && !InCombat)
+	if (!IsZoomed && !InCombat)
 	{
 		MyTargetArmLength = 250.0f;
 		MyTargetArmLocation = FVector(0, 0, 0);
 		MyCameraLocation = FVector(0, 0, 0);
 
-		IsZoom = true;
+		IsZoomed = true;
 		ZoomInterpTime = 6;
 		CanZoom = true;
 	}
 }
 void AMyRoguelikeCharacter::SetZoomOutProp()
 {
-	if (IsZoom)
+	if (IsZoomed)
 	{
 		MyTargetArmLength = 400.0f;
 		MyTargetArmLocation = FVector(0, 0, 55);
 		MyCameraLocation = FVector(0, 0, 55);
 
-		IsZoom = false;
+		IsZoomed = false;
 		ZoomInterpTime = 6;
 		CanZoom = true;
 	}
@@ -457,15 +449,15 @@ void AMyRoguelikeCharacter::HandleCombatState()
 	InCombat = true;
 
 	// 만약 타이머가 이미 실행 중이면, 타이머를 초기화하고 5초 후에 다시 호출합니다.
-	if (GetWorldTimerManager().IsTimerActive(CombatStateHandle))
+	if (GetWorldTimerManager().IsTimerActive(CombatStateTHandle))
 	{
-		GetWorldTimerManager().ClearTimer(CombatStateHandle);
-		GetWorldTimerManager().SetTimer(CombatStateHandle, this, &AMyRoguelikeCharacter::SetInCombatFalse, 5.f, false);
+		GetWorldTimerManager().ClearTimer(CombatStateTHandle);
+		GetWorldTimerManager().SetTimer(CombatStateTHandle, this, &AMyRoguelikeCharacter::SetInCombatFalse, 5.f, false);
 	}
 	else
 	{
 		// 타이머가 실행 중이 아니면, 5초 후에 InCombat을 false로 설정합니다.
-		GetWorldTimerManager().SetTimer(CombatStateHandle, this, &AMyRoguelikeCharacter::SetInCombatFalse, 5.f, false);
+		GetWorldTimerManager().SetTimer(CombatStateTHandle, this, &AMyRoguelikeCharacter::SetInCombatFalse, 5.f, false);
 	}
 }
 void AMyRoguelikeCharacter::SetInCombatFalse()

@@ -122,7 +122,7 @@ public:
 
 	// !MyCode------------------------------------------------------
 protected:
-	// * 키bool Anim블루프린트 몽타주 실행용
+	// * 키bool Anim블루프린트 몽타주 실행용 // 블루프린트에서만 사용하고있다.
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsQPressed = false;
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
@@ -145,12 +145,15 @@ public:
 	// * 임시 죽는애니메이션 play
 	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
+
 	// * 체력바UI
 	UFUNCTION(BlueprintPure)
 	float GetHealthPercent() const;
+
 	// * 데미지UI
 	UFUNCTION(BlueprintPure)
 	float GetDamage() const;
+
 	float DamageText;
 
 protected:
@@ -159,15 +162,19 @@ protected:
 	bool DebugOnOff = 0;
 
 	// * 줌인아웃 & 카메라조종가능
-	bool IsZoom = false;
+	bool IsZoomed = false;
 	bool CanZoom = true;
 	float ZoomInterpTime = 6;
+
 	UPROPERTY()
 	float MyTargetArmLength = 400.0f;
+
 	UPROPERTY()
 	FVector MyTargetArmLocation = FVector(0, 0, 45);
+
 	UPROPERTY()
 	FVector MyCameraLocation = FVector(0, 0, 70);
+
 	bool CanCameraControl = true;
 
 	// * Pawn Rotate
@@ -177,23 +184,29 @@ protected:
 	// * 전투state
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool InCombat = false;
-	FTimerHandle CombatStateHandle;
+
+	FTimerHandle CombatStateTHandle;
 
 	// * 초기속력(default), 현재속력(this) 로 구분.
 	// TODO ThisSpeed = DefaultSpeed + DefaultSpeed * 아이템효과
 	UPROPERTY(EditAnywhere, Category = "BaseMovement")
 	float DefaultSpeed = 600.f;
+
 	UPROPERTY(EditAnywhere, Category = "BaseMovement")
 	float ThisSpeed = 400.f;
+
 	UPROPERTY(EditAnywhere, Category = "BaseMovement")
 	float DefaultJogSpeed = 1200.f;
+
 	UPROPERTY(EditAnywhere, Category = "BaseMovement")
 	float ThisJogSpeed = 800.f;
 
 	// * w눌린상태>달리기가능   달리는상태>w때기>달리기종료
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsJog = false;
+
 	bool CanJog = true;
+
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool IsWPressed = false;
 
@@ -205,16 +218,20 @@ protected:
 	// TODO 방어력 기능 구현
 	UPROPERTY(EditDefaultsOnly, Category = "Defensive")
 	float MaxHealth = 100;
+
 	UPROPERTY(VisibleAnywhere, Category = "Defensive")
 	float Health;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Defensive")
 	int Armor = 0;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Defensive")
 	bool DamageImmunity = false; // true > 무적
 	// TODO 각종 공격효과 무효 bool
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool TakeDamageAnim = false;
+
 	bool CanTakeDamageAnim = true;
 	FTimerHandle TakeDamageHandle;
 
