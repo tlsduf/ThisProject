@@ -2,7 +2,7 @@
 
 #include "MyRoguelikeCharacter.h"
 #include "../Core/MyRoguelikeGameMode.h"
-#include "../Skillbase.h"
+#include "../Skill/Skillbase.h"
 
 #include <Camera/CameraComponent.h>
 #include <Components/CapsuleComponent.h>
@@ -12,13 +12,13 @@
 #include <GameFramework/Controller.h>
 #include <GameFramework/PlayerController.h>
 
-#include <Engine/EngineTypes.h>
 #include <TimerManager.h>
 #include <DrawDebugHelpers.h>
 #include <Kismet/GameplayStatics.h>
 #include <Particles/ParticleSystemComponent.h>
 #include <EnhancedInputComponent.h>
 #include <EnhancedInputSubsystems.h>
+#include <Engine/EngineTypes.h>
 
 
 

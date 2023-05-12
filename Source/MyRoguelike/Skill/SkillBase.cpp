@@ -2,6 +2,7 @@
 
 
 #include "SkillBase.h"
+#include "../Common/GameLog.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(SkillBase)
 
@@ -39,15 +40,15 @@ void USkillBase::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 // =============================================================
 void USkillBase::SkillStarted()
 {
-	//LOG_SCREEN(TEXT("%s, SkillStarted!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillStarted!"), *GetName());
 }
 
 // =============================================================
-// 스킬이 시작되고 트리거 되기전까지 계속 호출됩니다. (아마도)..
+// 스킬이 시작되고 트리거 되기전까지 계속 호출됩니다.
 // =============================================================
 void USkillBase::SkillOngoing()
 {
-	//LOG_SCREEN(TEXT("%s, SkillOngoing!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillOngoing!"), *GetName());
 }
 
 // =============================================================
@@ -55,7 +56,7 @@ void USkillBase::SkillOngoing()
 // =============================================================
 void USkillBase::SkillTriggered()
 {
-	//LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
 }
 
 // =============================================================
@@ -63,7 +64,7 @@ void USkillBase::SkillTriggered()
 // =============================================================
 void USkillBase::SkillCompleted()
 {
-	//LOG_SCREEN(TEXT("%s, SkillCompleted!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillCompleted!"), *GetName());
 }
 
 // =============================================================
@@ -71,5 +72,5 @@ void USkillBase::SkillCompleted()
 // =============================================================
 void USkillBase::SkillCanceled()
 {
-	//LOG_SCREEN(TEXT("%s, SkillCanceled!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillCanceled!"), *GetName());
 }
