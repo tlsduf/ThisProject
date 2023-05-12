@@ -18,7 +18,7 @@
 #include <Particles/ParticleSystemComponent.h>
 #include <EnhancedInputComponent.h>
 #include <EnhancedInputSubsystems.h>
-#include <Engine/EngineTypes.h>
+#include "Engine/DamageEvents.h"
 
 
 
@@ -350,7 +350,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		//================================================================
 		// 1.데미지이벤트 판별
 		//================================================================
-		/*
+		
 		if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Taken Point Damage"));
@@ -365,7 +365,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Taken Radial Damage"));
 			const FRadialDamageEvent *RadialDamageEvent = static_cast<const FRadialDamageEvent *>(&DamageEvent);
-		}*/
+		}
 
 		//================================================================
 		// 2.데미지 계산(공식적용-올림내림)
