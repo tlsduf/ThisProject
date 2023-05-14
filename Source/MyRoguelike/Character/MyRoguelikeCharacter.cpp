@@ -3,6 +3,7 @@
 #include "MyRoguelikeCharacter.h"
 #include "../Core/MyRoguelikeGameMode.h"
 #include "../Skill/Skillbase.h"
+#include "../Common/GameLog.h"
 
 #include <Camera/CameraComponent.h>
 #include <Components/CapsuleComponent.h>
@@ -18,7 +19,7 @@
 #include <Particles/ParticleSystemComponent.h>
 #include <EnhancedInputComponent.h>
 #include <EnhancedInputSubsystems.h>
-#include "Engine/DamageEvents.h"
+#include <Engine/DamageEvents.h>
 
 
 
@@ -354,6 +355,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Taken Point Damage"));
+			LOG_SCREEN(TEXT("Taken Point Damage"));
 			const FPointDamageEvent *PointDamageEvent = static_cast<const FPointDamageEvent *>(&DamageEvent);
 			if (0 == (PointDamageEvent->HitInfo.BoneName).Compare(FName(TEXT("Head"))))
 			{
@@ -364,6 +366,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		else if (DamageEvent.IsOfType(FRadialDamageEvent::ClassID))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Taken Radial Damage"));
+			LOG_SCREEN(TEXT("Taken Radial Damage"));
 			const FRadialDamageEvent *RadialDamageEvent = static_cast<const FRadialDamageEvent *>(&DamageEvent);
 		}
 
@@ -396,6 +399,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		if (IsDead())
 		{
 			UE_LOG(LogTemp, Warning, TEXT("He Died"));
+			LOG_SCREEN(TEXT("He Died"));
 			AMyRoguelikeGameMode *GameMode = GetWorld()->GetAuthGameMode<AMyRoguelikeGameMode>();
 			if (GameMode != nullptr)
 			{
@@ -411,6 +415,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		}
 
 		UE_LOG(LogTemp, Warning, TEXT("Now Health : %f"), Health);
+		LOG_SCREEN(TEXT("Now Health : %f"), Health);
 		return Damage;
 	}
 	else // DamageImmunity가 true 일 때 Damage = 0

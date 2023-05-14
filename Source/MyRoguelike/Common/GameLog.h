@@ -8,26 +8,26 @@
 
 
 // =============================================================
-// __pragma message Ä¿½ºÅÒ ¸Þ½ÃÁö Á¤ÀÇ
+// __pragma message ì»¤ìŠ¤í…€ ë©”ì‹œì§€ ì •ì˜
 // 
-// ÇöÀç [ TODO ] ÇüÅÂÀÇ ÃßÈÄ ÀÛ¾÷ ¿¹Á¤ ·Î±×¸¸ ±¸Çö
+// í˜„ìž¬ [ TODO ] í˜•íƒœì˜ ì¶”í›„ ìž‘ì—… ì˜ˆì • ë¡œê·¸ë§Œ êµ¬í˜„
 // =============================================================
 #define __chSTR(x) #x
 #define chSTR(x)  __chSTR(x)
 
-// ¸®¸¶ÀÎµå, ÃßÈÄ ¼öÁ¤ ¿ëµµ·Î »ç¿ë ÁÖ¼® ³¡ ¹®Àå¿¡´Â ( ÀÛ¾÷ÀÚ ) ¸¦ ¹Ýµå½Ã ½áÁÙ°Í
-// ex) TODO( "Å×½ºÆ® Áß, ÃßÈÄ ¼öÁ¤ ¿¹Á¤", ( Å©·Î ) )
+// ë¦¬ë§ˆì¸ë“œ, ì¶”í›„ ìˆ˜ì • ìš©ë„ë¡œ ì‚¬ìš© ì£¼ì„ ë ë¬¸ìž¥ì—ëŠ” ( ìž‘ì—…ìž ) ë¥¼ ë°˜ë“œì‹œ ì¨ì¤„ê²ƒ
+// ex) TODO( "í…ŒìŠ¤íŠ¸ ì¤‘, ì¶”í›„ ìˆ˜ì • ì˜ˆì •", ( í¬ë¡œ ) )
 #define __TODO(msg, name) message(__FILE__ "(" chSTR(__LINE__) "): [ TODO ] " #msg " " #name)
 #define TODO(msg, name) __pragma(__TODO(msg, name)) 
 
-// ÄÚµù ±Ô¾à¿¡ ¸ÂÁö ¾Ê°Å³ª ´õ ³ªÀº ÄÚµå ÀÛ¼º ¹æ¹ýÀÌ ÀÖ´Â °æ¿ì ³²±â·Á´Â ¸ñÀûÀ¸·Î »ç¿ëÇÏ°íÀÚ ÇÕ´Ï´Ù
-// ´ã´çÀÚºÐÀº ÇØ´ç ÄÚ¸àÆ® È®ÀÎÇÏ¼ÌÀ¸¸é ¼öÁ¤ ÈÄ Áö¿öÁÖ½Ã¸é µË´Ï´Ù
+// ì½”ë”© ê·œì•½ì— ë§žì§€ ì•Šê±°ë‚˜ ë” ë‚˜ì€ ì½”ë“œ ìž‘ì„± ë°©ë²•ì´ ìžˆëŠ” ê²½ìš° ë‚¨ê¸°ë ¤ëŠ” ëª©ì ìœ¼ë¡œ ì‚¬ìš©í•˜ê³ ìž í•©ë‹ˆë‹¤
+// ë‹´ë‹¹ìžë¶„ì€ í•´ë‹¹ ì½”ë©˜íŠ¸ í™•ì¸í•˜ì…¨ìœ¼ë©´ ìˆ˜ì • í›„ ì§€ì›Œì£¼ì‹œë©´ ë©ë‹ˆë‹¤
 #define __COMMENT(msg, name) message(__FILE__ "(" chSTR(__LINE__) "): [ COMMENT ] " #msg " " #name)
 #define COMMENT(msg, name) __pragma(__COMMENT(msg, name)) 
 
-// ÄÚµå ÀÛ¼º °ü·ÃÇØ¼­ ´õ ³ªÀº ¹æ¹ýÀÌ ÀÖ´Â °æ¿ì ³²±â·Á´Â ¸ñÀûÀ¸·Î »ç¿ëÇÏ°íÀÚ ÇÕ´Ï´Ù
-// ´ã´çÀÚºÐÀº ÇØ´ç ÄÚ¸àÆ® È®ÀÎÇÏ¼ÌÀ¸¸é Áö¿öÁÖ½Ã¸é µË´Ï´Ù
-// ( ±»ÀÌ Tip ´ë·Î ¼öÁ¤ÇÏ½Ç ÇÊ¿ä´Â ¾ø½À´Ï´Ù! °³ÀÎ ÃëÇâ! )
+// ì½”ë“œ ìž‘ì„± ê´€ë ¨í•´ì„œ ë” ë‚˜ì€ ë°©ë²•ì´ ìžˆëŠ” ê²½ìš° ë‚¨ê¸°ë ¤ëŠ” ëª©ì ìœ¼ë¡œ ì‚¬ìš©í•˜ê³ ìž í•©ë‹ˆë‹¤
+// ë‹´ë‹¹ìžë¶„ì€ í•´ë‹¹ ì½”ë©˜íŠ¸ í™•ì¸í•˜ì…¨ìœ¼ë©´ ì§€ì›Œì£¼ì‹œë©´ ë©ë‹ˆë‹¤
+// ( êµ³ì´ Tip ëŒ€ë¡œ ìˆ˜ì •í•˜ì‹¤ í•„ìš”ëŠ” ì—†ìŠµë‹ˆë‹¤! ê°œì¸ ì·¨í–¥! )
 #define __TIP(msg, name) message(__FILE__ "(" chSTR(__LINE__) "): [ TIP ] " #msg " " #name)
 #define TIP(msg, name) __pragma(__TIP(msg, name)) 
 
@@ -36,13 +36,13 @@
 #define FUNCTION_NAME __FUNCTION__ TEXT("()")
 
 // =============================================================
-// Log Category Á¤ÀÇ
-// ·Î±× Ä«Å×°í¸® Ãß°¡ ½Ã GameLog.cpp ¿¡µµ °°ÀÌ Ãß°¡ÇØ¾ß ÇÔ.
+// Log Category ì •ì˜
+// ë¡œê·¸ ì¹´í…Œê³ ë¦¬ ì¶”ê°€ ì‹œ GwLog.cpp ì—ë„ ê°™ì´ ì¶”ê°€í•´ì•¼ í•¨.
 // =============================================================
 DECLARE_LOG_CATEGORY_EXTERN(GameLog, Log, All);
 
 
-// ½ÇÁ¦ ¹èÆ÷½Ã¿¡´Â ·Î±×°¡ Á¦°ÅµË´Ï´Ù.
+// ì‹¤ì œ ë°°í¬ì‹œì—ëŠ” ë¡œê·¸ê°€ ì œê±°ë©ë‹ˆë‹¤.
 #if UE_BUILD_SHIPPING
 #define __LOG( Category, LogVerbosity, Prefix, Format, ...) {}
 #define LOG_SCREEN( Format, ... ) {}
@@ -55,9 +55,9 @@ DECLARE_LOG_CATEGORY_EXTERN(GameLog, Log, All);
 		UE_LOG( Category, LogVerbosity, TEXT( "%s %s" ), Prefix, *msg );			 \
 	}
 // =============================================================
-// ½ºÅ©¸° Ãâ·Â ·Î±×¿¡ »ç¿ëµÇ´Â Define ¸ðÀ½
-// Order °ªÀÌ -1 ÀÎ Á¡ ÁÖÀÇÇØÁÖ¼¼¿ä
-// #else ~ #endif »çÀÌ¿¡ Ãß°¡µÇ´Â Ãß°¡ #define Àº UE_BUILD_SHIPPING ¿¡µµ °°ÀÌ Á¤ÀÇÇØÁÖ½Ã¸é µË´Ï´Ù.
+// ìŠ¤í¬ë¦° ì¶œë ¥ ë¡œê·¸ì— ì‚¬ìš©ë˜ëŠ” Define ëª¨ìŒ
+// Order ê°’ì´ -1 ì¸ ì  ì£¼ì˜í•´ì£¼ì„¸ìš”
+// #else ~ #endif ì‚¬ì´ì— ì¶”ê°€ë˜ëŠ” ì¶”ê°€ #define ì€ UE_BUILD_SHIPPING ì—ë„ ê°™ì´ ì •ì˜í•´ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.
 // =============================================================
 #define LOG_SCREEN( Format, ... )												 \
 	{																				 \
@@ -76,24 +76,24 @@ DECLARE_LOG_CATEGORY_EXTERN(GameLog, Log, All);
 #endif
 
 // =============================================================
-// Ãâ·Â ·Î±×¿¡ »ç¿ëµÇ´Â Define ¸ðÀ½
+// ì¶œë ¥ ë¡œê·¸ì— ì‚¬ìš©ë˜ëŠ” Define ëª¨ìŒ
 // =============================================================
-// GameLog        : ÇÊÅÍ¸µ ÇÒ ¼ö ÀÖ´Â Ä«Å×°í¸®
-// LogVerbosity : Log, Warning, Error µî ·Î±× Áß¿äµµ
-// Prefix       : Á¢µÎ»ç - Format ¸Þ½ÃÁö ¿Ü¿¡ Ãß°¡ÀûÀÎ Á¢µÎ»ç¸¦ »ç¿ëÇÒ ¼öÀÖ½À´Ï´Ù
-// Format       : µÚ¿¡ ºÙ´Â ... °¡º¯ ÀÎ¼ö¿¡ µû¶ó¼­ ¹®ÀÚ¿­ Æ÷¸ËÆÃÀ» ¼öÇàÇÕ´Ï´Ù
+// GwLog        : í•„í„°ë§ í•  ìˆ˜ ìžˆëŠ” ì¹´í…Œê³ ë¦¬
+// LogVerbosity : Log, Warning, Error ë“± ë¡œê·¸ ì¤‘ìš”ë„
+// Prefix       : ì ‘ë‘ì‚¬ - Format ë©”ì‹œì§€ ì™¸ì— ì¶”ê°€ì ì¸ ì ‘ë‘ì‚¬ë¥¼ ì‚¬ìš©í•  ìˆ˜ìžˆìŠµë‹ˆë‹¤
+// Format       : ë’¤ì— ë¶™ëŠ” ... ê°€ë³€ ì¸ìˆ˜ì— ë”°ë¼ì„œ ë¬¸ìžì—´ í¬ë§·íŒ…ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤
 // ex) LOG( TEXT( "CurrValue : %d" ), Value );
 #define CUSTOM_LOG( LogVerbosity, Prefix, Format, ... )     { __LOG( GameLog,       LogVerbosity, Prefix,             Format, ##__VA_ARGS__ ); }
 #define LOG( Format, ... )                                  { __LOG( GameLog,       Log,          TEXT( "" ),         Format, ##__VA_ARGS__ ); }
 #define WARN_LOG( Format, ... )                             { __LOG( GameLog,       Warning,      TEXT( "!!" ),       Format, ##__VA_ARGS__ ); }
 #define ERROR_LOG( Format, ... )                            { __LOG( GameLog,       Error,        TEXT( "**" ),       Format, ##__VA_ARGS__ ); }
 
-// ÇÏ´ÜÀÇ ÁÖ¼®Ã³¸® µÈ #define Àº ÃßÈÄ ·Î±× Å¸ÀÔ Ãß°¡½Ã Âü°íÇÒ ¼ö ÀÖ´Â ¿¹½ÃÀÔ´Ï´Ù
-// Catetgory ¸¦ º°µµÀÇ ÇÊÅÍ¸µÀÌ °¡´ÉÇÏµµ·Ï Ãß°¡ÇÏ°Å³ª Æ¯Á¤ LogVerbosity, È¤Àº Æ¯Á¤ Á¢µÎ»ç ·Î±×°¡ ÇÊ¿äÇÏ´Ù¸é Ãß°¡ÇØÁÖ¼¼¿ä
-// Log Category Á¤ÀÇ Ãß°¡ ÇÊ¿ä
+// í•˜ë‹¨ì˜ ì£¼ì„ì²˜ë¦¬ ëœ #define ì€ ì¶”í›„ ë¡œê·¸ íƒ€ìž… ì¶”ê°€ì‹œ ì°¸ê³ í•  ìˆ˜ ìžˆëŠ” ì˜ˆì‹œìž…ë‹ˆë‹¤
+// Catetgory ë¥¼ ë³„ë„ì˜ í•„í„°ë§ì´ ê°€ëŠ¥í•˜ë„ë¡ ì¶”ê°€í•˜ê±°ë‚˜ íŠ¹ì • LogVerbosity, í˜¹ì€ íŠ¹ì • ì ‘ë‘ì‚¬ ë¡œê·¸ê°€ í•„ìš”í•˜ë‹¤ë©´ ì¶”ê°€í•´ì£¼ì„¸ìš”
+// Log Category ì •ì˜ ì¶”ê°€ í•„ìš”
 /*
-#define LOG_SKILL   ( Format, ...                     )		{ __LOG( GameLogSkill , Warning,      TEXT( "!!" ),       Format, ##__VA_ARGS__ ); }
-#define CONTENT_LOG1( Format, ...                     )		{ __LOG( GameLogÄÁÅÙÃ÷, Log,          TEXT( "Á¢µÎ»ç" ),   Format, ##__VA_ARGS__ ); }
-#define CONTENT_LOG2( Format, ...                     )		{ __LOG( GameLogÄÁÅÙÃ÷, Warning,      TEXT( "Á¢µÎ»ç" ),   Format, ##__VA_ARGS__ ); }
-#define CONTENT_LOG3( Format, ...                     )		{ __LOG( GameLogÄÁÅÙÃ÷, Error,        TEXT( "Á¢µÎ»ç" ),   Format, ##__VA_ARGS__ ); }
+#define LOG_SKILL   ( Format, ...                     )		{ __LOG( GwLogSkill , Warning,      TEXT( "!!" ),       Format, ##__VA_ARGS__ ); }
+#define CONTENT_LOG1( Format, ...                     )		{ __LOG( GwLogì»¨í…ì¸ , Log,          TEXT( "ì ‘ë‘ì‚¬" ),   Format, ##__VA_ARGS__ ); }
+#define CONTENT_LOG2( Format, ...                     )		{ __LOG( GwLogì»¨í…ì¸ , Warning,      TEXT( "ì ‘ë‘ì‚¬" ),   Format, ##__VA_ARGS__ ); }
+#define CONTENT_LOG3( Format, ...                     )		{ __LOG( GwLogì»¨í…ì¸ , Error,        TEXT( "ì ‘ë‘ì‚¬" ),   Format, ##__VA_ARGS__ ); }
 */

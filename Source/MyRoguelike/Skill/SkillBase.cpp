@@ -40,7 +40,7 @@ void USkillBase::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 // =============================================================
 void USkillBase::SkillStarted()
 {
-	LOG_SCREEN(TEXT("%s, SkillStarted!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillStarted!"), *GetName());
 }
 
 // =============================================================
@@ -48,7 +48,7 @@ void USkillBase::SkillStarted()
 // =============================================================
 void USkillBase::SkillOngoing()
 {
-	LOG_SCREEN(TEXT("%s, SkillOngoing!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillOngoing!"), *GetName());
 }
 
 // =============================================================
@@ -56,7 +56,7 @@ void USkillBase::SkillOngoing()
 // =============================================================
 void USkillBase::SkillTriggered()
 {
-	LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
 }
 
 // =============================================================
@@ -64,7 +64,7 @@ void USkillBase::SkillTriggered()
 // =============================================================
 void USkillBase::SkillCompleted()
 {
-	LOG_SCREEN(TEXT("%s, SkillCompleted!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillCompleted!"), *GetName());
 }
 
 // =============================================================
@@ -72,5 +72,5 @@ void USkillBase::SkillCompleted()
 // =============================================================
 void USkillBase::SkillCanceled()
 {
-	LOG_SCREEN(TEXT("%s, SkillCanceled!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillCanceled!"), *GetName());
 }
