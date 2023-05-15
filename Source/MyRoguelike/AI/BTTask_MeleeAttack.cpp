@@ -1,9 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BTTask_MeleeAttack.h"
-#include "AIController.h"
-
 #include "../Character/BaseEnemyCharacter.h"
+
+#include <AIController.h>
+
 
 UBTTask_MeleeAttack::UBTTask_MeleeAttack()
 {

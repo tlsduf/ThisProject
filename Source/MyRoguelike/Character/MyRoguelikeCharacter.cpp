@@ -21,8 +21,6 @@
 #include <EnhancedInputSubsystems.h>
 #include <Engine/DamageEvents.h>
 
-
-
 #include UE_INLINE_GENERATED_CPP_BY_NAME(MyRoguelikeCharacter)
 
 AMyRoguelikeCharacter::AMyRoguelikeCharacter()
@@ -68,6 +66,7 @@ void AMyRoguelikeCharacter::BeginPlay()
 
 	// 게임시작시 기본체력초기화
 	Health = MaxHealth;
+	JumpMaxCount = ThisJumpMaxCount;
 }
 
 // Called every frame

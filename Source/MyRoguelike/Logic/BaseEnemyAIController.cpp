@@ -17,6 +17,7 @@ void ABaseEnemyAIController::BeginPlay()
         APawn *PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
         GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
+
         // SetFocus(PlayerPawn);
         // MoveToActor(PlayerPawn, 200); //200 = radius
         // StopMovement();
@@ -36,4 +37,9 @@ bool ABaseEnemyAIController::IsDead() const
         return ControlledCharacter->IsDead();
     }
     return true;
+}
+
+void ABaseEnemyAIController::OnPossess(APawn* InPawn)
+{
+    //GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
 }

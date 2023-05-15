@@ -9,7 +9,7 @@
 /**
  *
  */
-UCLASS()
+UCLASS(config = Game)
 class MYROGUELIKE_API ABasePlayerCharacter : public AMyRoguelikeCharacter
 {
 	GENERATED_BODY()

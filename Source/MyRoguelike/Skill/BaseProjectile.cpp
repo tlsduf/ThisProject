@@ -1,12 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BaseProjectile.h"
-#include "Components/StaticMeshComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
-#include "GameFramework/DamageType.h"
-#include "Kismet/GameplayStatics.h"
-#include "Particles/ParticleSystemComponent.h"
-#include "GameFramework/Character.h"
+
+#include <Components/StaticMeshComponent.h>
+#include <GameFramework/ProjectileMovementComponent.h>
+#include <GameFramework/DamageType.h>
+#include <Kismet/GameplayStatics.h>
+#include <Particles/ParticleSystemComponent.h>
+#include <GameFramework/Character.h>
 
 // Sets default values
 ABaseProjectile::ABaseProjectile()

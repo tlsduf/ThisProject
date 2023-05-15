@@ -2,9 +2,10 @@
 
 
 #include "BTTask_ProjectileAttack.h"
-#include "AIController.h"
-
 #include "../Character/BaseEnemyCharacter.h"
+
+#include <AIController.h>
+
 
 UBTTask_ProjectileAttack::UBTTask_ProjectileAttack()
 {
