@@ -10,6 +10,7 @@
 void ABaseEnemyAIController::BeginPlay()
 {
     Super::BeginPlay();
+    //밑 기능은 OnPossess로 옮김. 스폰한 액터에 컨트롤러 빙의시 크래쉬가 나기 때문임 ㄷㄷ...
     /*
     if (AIBehavior != nullptr)
     {

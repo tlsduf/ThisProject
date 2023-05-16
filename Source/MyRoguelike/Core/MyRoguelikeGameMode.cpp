@@ -10,6 +10,7 @@
 #include <Kismet/GameplayStatics.h>
 #include <EngineUtils.h>
 #include <GameFramework/Controller.h>
+#include <Modules/ModuleManager.h>
 
 
 
@@ -30,7 +31,7 @@ AMyRoguelikeGameMode::AMyRoguelikeGameMode()
 	Section2->AddCategory("LM");
 	Section2->AddCategory("skill Q");
 	Section2->AddCategory("skill E");
-	Section2->AddCategory("skill R"); 
+	Section2->AddCategory("skill R");
 #undef LOCTEXT_NAMESPACE
 
 	// set default pawn class to our Blueprinted character
