@@ -10,6 +10,7 @@
 void ABaseEnemyAIController::BeginPlay()
 {
     Super::BeginPlay();
+    /*
     if (AIBehavior != nullptr)
     {
         RunBehaviorTree(AIBehavior);
@@ -21,7 +22,7 @@ void ABaseEnemyAIController::BeginPlay()
         // SetFocus(PlayerPawn);
         // MoveToActor(PlayerPawn, 200); //200 = radius
         // StopMovement();
-    }
+    }*/
 }
 
 void ABaseEnemyAIController::Tick(float DeltaTime)
@@ -41,5 +42,13 @@ bool ABaseEnemyAIController::IsDead() const
 
 void ABaseEnemyAIController::OnPossess(APawn* InPawn)
 {
-    //GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
+    Super::OnPossess(InPawn);
+    if (AIBehavior != nullptr)
+    {
+        RunBehaviorTree(AIBehavior);
+
+        APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+
+        GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
+    }
 }
