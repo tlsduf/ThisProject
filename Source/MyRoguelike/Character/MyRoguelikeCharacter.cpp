@@ -288,11 +288,13 @@ void AMyRoguelikeCharacter::RotatePawn(float DeltaTime)
 	const FRotator Rotation = Controller->GetControlRotation();
 	const FRotator YawRotation(0, Rotation.Yaw, 0);
 
-	SetActorRotation(FMath::RInterpTo(
-		GetActorRotation(),
-		YawRotation,
-		DeltaTime,
-		10));
+	SetActorRotation(YawRotation);
+
+	//SetActorRotation(FMath::RInterpTo(
+	//	GetActorRotation(),
+	//	YawRotation,
+	//	DeltaTime,
+	//	10));
 }
 
 // Base Movement
