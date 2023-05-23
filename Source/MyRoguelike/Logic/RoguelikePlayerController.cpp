@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "RoguelikePlayerController.h"
-#include "../Skill/Skillbase.h"
+#include "../Skill/PlayerSkill.h"
 #include "../Character/MyRoguelikeCharacter.h"
 
 #include <Blueprint/UserWidget.h>

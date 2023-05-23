@@ -2,7 +2,7 @@
 
 #include "MyRoguelikeCharacter.h"
 #include "../Core/MyRoguelikeGameMode.h"
-#include "../Skill/Skillbase.h"
+#include "../Skill/PlayerSkill.h"
 #include "../Common/GameLog.h"
 
 #include <Camera/CameraComponent.h>
@@ -110,18 +110,6 @@ void AMyRoguelikeCharacter::SetupPlayerInputComponent(class UInputComponent *Pla
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-// =============================================================
-// SkillInfos의 TSubClassOf들을 설정된 순서대로 Skills 배열에 인스턴스화 시킵니다.
-// =============================================================
-void AMyRoguelikeCharacter::InitSkills()
-{
-	Skills.Empty();
-	for (const auto &skillInfo : SkillInfos)
-	{
-		Skills.Add(NewObject<USkillBase>(this, skillInfo));
-	}
-}
-
 void AMyRoguelikeCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	Jump();
@@ -171,6 +159,18 @@ void AMyRoguelikeCharacter::Look(const FInputActionValue &Value)
 }
 
 // =============================================================
+// SkillInfos의 TSubClassOf들을 설정된 순서대로 Skills 배열에 인스턴스화 시킵니다.
+// =============================================================
+void AMyRoguelikeCharacter::InitSkills()
+{
+	Skills.Empty();
+	for (const auto &skillInfo : SkillInfos)
+	{
+		Skills.Add(NewObject<UPlayerSkill>(this, skillInfo));
+	}
+}
+
+// =============================================================
 // 아래부터 각 상황에 맞는 스킬 호출 함수입니다. PlayerController에서 호출하면, 받아온 Index대로
 // 인스턴스화 된 배열의 스킬에서 상황에 맞는 함수를 호출합니다.
 // =============================================================
@@ -178,35 +178,35 @@ void AMyRoguelikeCharacter::SkillStarted(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->SkillStarted();
+		Skills[InSkillIndex]->OnInputSkillStarted();
 	}
 }
 void AMyRoguelikeCharacter::SkillOngoing(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->SkillOngoing();
+		Skills[InSkillIndex]->OnInputSkillOngoing();
 	}
 }
 void AMyRoguelikeCharacter::SkillTriggered(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->SkillTriggered();
+		Skills[InSkillIndex]->OnInputSkillTriggered();
 	}
 }
 void AMyRoguelikeCharacter::SkillCompleted(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->SkillCompleted();
+		Skills[InSkillIndex]->OnInputSkillCompleted();
 	}
 }
 void AMyRoguelikeCharacter::SkillCanceled(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->SkillCanceled();
+		Skills[InSkillIndex]->OnInputSkillCanceled();
 	}
 }
 

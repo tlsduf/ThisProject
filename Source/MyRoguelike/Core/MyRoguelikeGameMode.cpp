@@ -25,6 +25,7 @@ AMyRoguelikeGameMode::AMyRoguelikeGameMode()
 	Section1->AddCategory("Debug");
 	Section1->AddCategory("BaseMovement");
 	Section1->AddCategory("CombatProp");
+	Section1->AddCategory("Skill");
 
 	TSharedRef<FPropertySection> Section2 = PropertyModule.FindOrCreateSection("BasePlayerCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
 	Section2->AddCategory("ThisMovement");
