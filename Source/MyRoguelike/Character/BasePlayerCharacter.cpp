@@ -226,7 +226,7 @@ void ABasePlayerCharacter::SetShootPlayFalse()
 void ABasePlayerCharacter::CombatRM()
 {
 }
-void ABasePlayerCharacter::ReSetRuntimeRM()
+void ABasePlayerCharacter::ResetDurationRM()
 {
 }
 void ABasePlayerCharacter::ResetCooldownRM()
@@ -307,11 +307,11 @@ void ABasePlayerCharacter::CombatQ()
 		}
 
 		//*후행 조건 설정부
-		GetWorldTimerManager().SetTimer(QRuntimeTHandle, this, &ABasePlayerCharacter::ReSetRuntimeQ, RuntimeQ, false);
+		GetWorldTimerManager().SetTimer(QDurationTHandle, this, &ABasePlayerCharacter::ResetDurationQ, DurationQ, false);
 		GetWorldTimerManager().SetTimer(QCooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownQ, CooldownTimeQ, false);
 	}
 }
-void ABasePlayerCharacter::ReSetRuntimeQ()
+void ABasePlayerCharacter::ResetDurationQ()
 {
 	IsRunningQ = false;
 
@@ -399,7 +399,7 @@ void ABasePlayerCharacter::CombatE()
 
 			IsRunningE = false;
 			InCooldownE = true;
-			// GetWorldTimerManager().SetTimer(ERuntimeHandle, this, &ABasePlayerCharacter::ReSetRuntimeE, RuntimeE, false);
+			// GetWorldTimerManager().SetTimer(EDurationHandle, this, &ABasePlayerCharacter::ResetDurationE, DurationE, false);
 			GetWorldTimerManager().SetTimer(ECooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownE, CooldownTimeE, false);
 
 			CanDash = true;
@@ -410,7 +410,7 @@ void ABasePlayerCharacter::CombatE()
 		}
 	}
 }
-void ABasePlayerCharacter::ReSetRuntimeE()
+void ABasePlayerCharacter::ResetDurationE()
 {
 	IsRunningE = false;
 
@@ -484,11 +484,11 @@ void ABasePlayerCharacter::CombatR()
 		}
 
 		//*후행 조건 설정부
-		GetWorldTimerManager().SetTimer(RRuntimeTHandle, this, &ABasePlayerCharacter::ReSetRuntimeR, RuntimeR, false);
+		GetWorldTimerManager().SetTimer(RDurationTHandle, this, &ABasePlayerCharacter::ResetDurationR, DurationR, false);
 		GetWorldTimerManager().SetTimer(RCooldownTHandle, this, &ABasePlayerCharacter::ResetCooldownR, CooldownTimeR, false);
 	}
 }
-void ABasePlayerCharacter::ReSetRuntimeR()
+void ABasePlayerCharacter::ResetDurationR()
 {
 	IsRunningR = false;
 

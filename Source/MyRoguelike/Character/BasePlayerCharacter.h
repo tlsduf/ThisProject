@@ -29,7 +29,7 @@ private:
 // bool IsRunningA 는 A의 동작시간 중인가를 판별하는 변수다.
 // bool CanA 는 A실행가능여부이다. 기본적으로 IsRunningA가 true일 동안 다른 CanB는 false가 된다. 이 기능은 Tick에서 조건문으로 업데이트한다.
 // bool IsCooldownA 는 A가 쿨다운 중인가를 판별하는 변수다.
-// float RuntimeA 는 A의 동작시간이다.
+// float DurationA 는 A의 동작시간이다.
 // float CooldownTimeA 은 재사용대기시간이다. SetTimer의 인자로 활용한다.
 //=================================================================================
 
@@ -81,10 +81,10 @@ private:
 	bool IsRunningRM = false;
 	bool CanRM = true;
 
-	FTimerHandle RMRuntimeTHandle;
+	FTimerHandle RMDurationTHandle;
 	FTimerHandle RMCooldownTHandle;
 	void CombatRM();
-	void ReSetRuntimeRM();
+	void ResetDurationRM();
 	void ResetCooldownRM();
 
 	void Aiming();
@@ -102,7 +102,7 @@ private:
 	bool InCooldownQ = false;
 
 	UPROPERTY(EditAnywhere, Category = "skill Q")
-	float RuntimeQ = 0.5f;
+	float DurationQ = 0.5f;
 
 	UPROPERTY(EditAnywhere, Category = "skill Q")
 	float CooldownTimeQ = 5.f;
@@ -110,10 +110,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "skill Q")
 	UParticleSystem *ProjectileMuzzleEffect;
 
-	FTimerHandle QRuntimeTHandle;
+	FTimerHandle QDurationTHandle;
 	FTimerHandle QCooldownTHandle;
 	void CombatQ();
-	void ReSetRuntimeQ();
+	void ResetDurationQ();
 	void ResetCooldownQ();
 	UFUNCTION(BlueprintPure)
 	float GetCooldownQPercent() const;
@@ -136,10 +136,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "skill E")
 	UParticleSystem *PinPointHitEffect;
 
-	FTimerHandle ERuntimeTHandle;
+	FTimerHandle EDurationTHandle;
 	FTimerHandle ECooldownTHandle;
 	void CombatE();
-	void ReSetRuntimeE();
+	void ResetDurationE();
 	void ResetCooldownE();
 	FHitResult GetUnderCursorLocation() const;
 	UFUNCTION(BlueprintPure)
@@ -151,7 +151,7 @@ private:
 	bool InCooldownR = false;
 
 	UPROPERTY(EditAnywhere, Category = "skill R")
-	float RuntimeR = 0.3f;
+	float DurationR = 0.3f;
 
 	UPROPERTY(EditAnywhere, Category = "skill R")
 	float CooldownTimeR = 5.f;
@@ -165,10 +165,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "skill R")
 	UParticleSystem *GranadeMuzzleEffect;
 
-	FTimerHandle RRuntimeTHandle;
+	FTimerHandle RDurationTHandle;
 	FTimerHandle RCooldownTHandle;
 	void CombatR();
-	void ReSetRuntimeR();
+	void ResetDurationR();
 	void ResetCooldownR();
 	UFUNCTION(BlueprintPure)
 	float GetCooldownRPercent() const;

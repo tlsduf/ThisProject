@@ -178,35 +178,35 @@ void AMyRoguelikeCharacter::SkillStarted(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->OnInputSkillStarted();
+		Skills[InSkillIndex]->SkillStarted();
 	}
 }
 void AMyRoguelikeCharacter::SkillOngoing(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->OnInputSkillOngoing();
+		Skills[InSkillIndex]->SkillOngoing();
 	}
 }
 void AMyRoguelikeCharacter::SkillTriggered(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->OnInputSkillTriggered();
+		Skills[InSkillIndex]->SkillTriggered();
 	}
 }
 void AMyRoguelikeCharacter::SkillCompleted(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->OnInputSkillCompleted();
+		Skills[InSkillIndex]->SkillCompleted();
 	}
 }
 void AMyRoguelikeCharacter::SkillCanceled(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
-		Skills[InSkillIndex]->OnInputSkillCanceled();
+		Skills[InSkillIndex]->SkillCanceled();
 	}
 }
 

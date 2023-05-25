@@ -11,7 +11,7 @@ class UPlayerSkill;
 
 class ABaseHitscan;
 
-class ABaseProjectile;
+//class ABaseProjectile;
 class AProjectileGranade;
 class AProjectileMissile;
 
