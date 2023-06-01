@@ -35,34 +35,21 @@ void USkillBase::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	// ...
 }
 
-// =============================================================
-// 스킬 사용 시작시 호출됩니다.
-// =============================================================
 void USkillBase::SkillStarted()
 {
 	//LOG_SCREEN(TEXT("%s, SkillStarted!"), *GetName());
 }
 
-// =============================================================
-// 스킬이 시작되고 트리거 되기전까지 계속 호출됩니다. (아마도)..
-// =============================================================
 void USkillBase::SkillOngoing()
 {
 	//LOG_SCREEN(TEXT("%s, SkillOngoing!"), *GetName());
 }
 
-// =============================================================
-// 스킬 입력이 Triggered일 때 호출됩니다.
-// =============================================================
 void USkillBase::SkillTriggered()
 {
 	//LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
 }
 
-// =============================================================
-// 스킬 입력이 Triggered 후 입력이 해제되거나, Triggered가 호출 된 후 호출됩니다.
-// TriggerType에 따라 다릅니다.
-// =============================================================
 void USkillBase::SkillCompleted()
 {
 	//LOG_SCREEN(TEXT("%s, SkillCompleted!"), *GetName());
@@ -71,9 +58,6 @@ void USkillBase::SkillCompleted()
 	//SkillCompletedDelegate.Execute(ESkillCompletedType::Success);
 }
 
-// =============================================================
-// 스킬 입력이 Ongoing 중 입력이 해제되면 호출됩니다.
-// =============================================================
 void USkillBase::SkillCanceled()
 {
 	//LOG_SCREEN(TEXT("%s, SkillCanceled!"), *GetName());

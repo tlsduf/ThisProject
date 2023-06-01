@@ -117,14 +117,14 @@ void ABasePlayerCharacter::SetupPlayerInputComponent(class UInputComponent *Play
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	check(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("LeftShift", IE_Pressed, this, &ABasePlayerCharacter::Dash);
+/* 	PlayerInputComponent->BindAction("LeftShift", IE_Pressed, this, &ABasePlayerCharacter::Dash);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Pressed, this, &ABasePlayerCharacter::CombatLM);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Released, this, &ABasePlayerCharacter::CombatLMReleased);
 	PlayerInputComponent->BindAction("RightMouse", IE_Pressed, this, &ABasePlayerCharacter::Aiming);
 	PlayerInputComponent->BindAction("RightMouse", IE_Released, this, &ABasePlayerCharacter::UnAiming);
 	PlayerInputComponent->BindAction("Q", IE_Pressed, this, &ABasePlayerCharacter::CombatQ);
 	PlayerInputComponent->BindAction("E", IE_Pressed, this, &ABasePlayerCharacter::CombatE);
-	PlayerInputComponent->BindAction("R", IE_Pressed, this, &ABasePlayerCharacter::CombatR);
+	PlayerInputComponent->BindAction("R", IE_Pressed, this, &ABasePlayerCharacter::CombatR); */
 }
 
 // Movement
@@ -282,7 +282,7 @@ void ABasePlayerCharacter::CombatQ()
 
 		//*기능 실현부
 
-		// 라인트레이스로 경로설정
+/* 		// 라인트레이스로 경로설정
 		FVector LineTraceLocation;
 		FRotator LineTraceRotation;
 		Controller->GetPlayerViewPoint(LineTraceLocation, LineTraceRotation);
@@ -297,7 +297,7 @@ void ABasePlayerCharacter::CombatQ()
 
 		// projectile spawn
 		ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, Location, Rotation);
-		ProjectileMissile->SetOwner(this);
+		ProjectileMissile->SetOwner(this); */
 
 		// Play Muzzle effect
 		FVector MuzzleLocation = GetMesh()->GetSocketLocation("Muzzle_01");

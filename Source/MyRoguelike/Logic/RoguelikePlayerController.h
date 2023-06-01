@@ -49,20 +49,7 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction *InputW;
-
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *LeftMouse;
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *RightMouse;
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *LeftShift;
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *InputQ;
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *InputE;
-	// UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	// class UInputAction *InputR;
-
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction *MouseWheelUp;
 
@@ -91,15 +78,14 @@ private:
 	void RemapSkillTriggerTypes();
 
 	// 입력된 ActionInput의 이름을 비교하여 몇번째 스킬인지 (Index)를 알아 내는 함수
-	int8 GetSkillIndexFromAction(const FInputActionInstance& InInstance);
+	int8 GetSkillIndexFromAction(const FInputActionInstance &InInstance);
 
 	// 스킬 관련 바인딩
-	void OnInputSkillStarted(const FInputActionInstance& InInstance);
-	void OnInputSkillOngoing(const FInputActionInstance& InInstance);
-	void OnInputSkillTriggered(const FInputActionInstance& InInstance);
-	void OnInputSkillCompleted(const FInputActionInstance& InInstance);
-	void OnInputSkillCanceled(const FInputActionInstance& InInstance);
-
+	void OnInputSkillStarted(const FInputActionInstance &InInstance);
+	void OnInputSkillOngoing(const FInputActionInstance &InInstance);
+	void OnInputSkillTriggered(const FInputActionInstance &InInstance);
+	void OnInputSkillCompleted(const FInputActionInstance &InInstance);
+	void OnInputSkillCanceled(const FInputActionInstance &InInstance);
 
 	void SetPlayerEnabledState(bool bPlayerEnabled);
 

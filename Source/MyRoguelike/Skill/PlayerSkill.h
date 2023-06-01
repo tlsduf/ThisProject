@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class MYROGUELIKE_API UPlayerSkill : public USkillBase
 {
 	GENERATED_BODY()

@@ -8,8 +8,7 @@
 
 class UInputTrigger;
 
-class AProjectileGranade;
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS(Blueprintable)
 class MYROGUELIKE_API USkillBase : public UActorComponent
 {
 	GENERATED_BODY()

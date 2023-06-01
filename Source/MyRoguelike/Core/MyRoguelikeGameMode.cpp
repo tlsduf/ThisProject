@@ -59,13 +59,13 @@ void AMyRoguelikeGameMode::PawnKilled(APawn *PawnKilled)
 		EndGame(false);
 	}
 
-	for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
+/* 	for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
 	{
 		if (!Controller->IsDead())
 		{
 			return;
 		}
-	}
+	} */
 
 	EndGame(true);
 	
