@@ -9,14 +9,6 @@
 
 class UPlayerSkill;
 
-class ABaseHitscan;
-
-//class ABaseProjectile;
-class AProjectileGranade;
-class AProjectileMissile;
-
-class ABaseMelee;
-
 UCLASS(config = Game)
 class AMyRoguelikeCharacter : public ACharacter
 {
@@ -204,7 +196,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Defensive")
 	int Armor = 0;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Defensive")
+	UPROPERTY(EditAnywhere, Category = "Defensive")
 	bool DamageImmunity = false; // true > 무적
 	// TODO 각종 공격효과 무효 bool
 

@@ -31,11 +31,11 @@ public:
 	FORCEINLINE const TObjectPtr<UInputTrigger>& GetTriggerType() const { return TriggerType; }
 	
 	// Input 상황에 따른 로직 처리 함수들입니다.
-	virtual void OnInputSkillStarted();
-	virtual void OnInputSkillOngoing();
-	virtual void OnInputSkillTriggered();
-	virtual void OnInputSkillCompleted();
-	virtual void OnInputSkillCanceled();
+	virtual void SkillStarted() override;
+	virtual void SkillOngoing() override;
+	virtual void SkillTriggered() override;
+	virtual void SkillCompleted() override;
+	virtual void SkillCanceled() override;
 
 	// 스킬이 어떠한 이유로 인해 캔슬될 때 호출됩니다.
 	virtual void CancelSkill() override;

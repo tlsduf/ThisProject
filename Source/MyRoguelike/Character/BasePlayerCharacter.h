@@ -34,7 +34,7 @@ private:
 //=================================================================================
 
 	// Movement
-	bool IsDash = false;
+/* 	bool IsDash = false;
 	bool CanDash = true;
 	bool IsCooldownDash = false;
 
@@ -171,5 +171,5 @@ private:
 	void ResetDurationR();
 	void ResetCooldownR();
 	UFUNCTION(BlueprintPure)
-	float GetCooldownRPercent() const;
+	float GetCooldownRPercent() const; */
 };

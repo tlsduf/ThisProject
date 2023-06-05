@@ -9,6 +9,10 @@
 /**
  *
  */
+
+class AProjectileGranade;
+class AApplyRadialDamage;
+
 UCLASS()
 class MYROGUELIKE_API ABaseEnemyCharacter : public AMyRoguelikeCharacter
 {
@@ -23,17 +27,17 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
 
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "Melee")
-	TSubclassOf<ABaseMelee> MeleeClass;
+	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
+	TSubclassOf<AApplyRadialDamage> MeleeClass;
 	UPROPERTY()
-	ABaseMelee *Melee;
+	AApplyRadialDamage *Melee;
 
-	UPROPERTY(EditDefaultsOnly, Category = "skill R")
+	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
 	UPROPERTY()
 	AProjectileGranade *ProjectileGranade;
 
-	UPROPERTY(EditAnywhere, Category = "skill R")
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *GranadeMuzzleEffect;
 
 	void MeleeAttackHandle();

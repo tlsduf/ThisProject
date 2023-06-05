@@ -1,10 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BasePlayerCharacter.h"
-#include "../Skill/BaseHitscan.h"
-#include "../Skill/ProjectileGranade.h"
-#include "../Skill/ProjectileMissile.h"
-#include "../Skill/BaseMelee.h"
+//#include "../Skill/BaseHitscan.h"
+//#include "../Skill/ProjectileGranade.h"
+//#include "../Skill/ProjectileMissile.h"
+//#include "../Skill/BaseMelee.h"
 
 #include <Camera/CameraComponent.h>
 #include <GameFramework/SpringArmComponent.h>
@@ -28,18 +28,18 @@ void ABasePlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	BaseHitscan = GetWorld()->SpawnActor<ABaseHitscan>(BaseHitscanClass);
+/* 	BaseHitscan = GetWorld()->SpawnActor<ABaseHitscan>(BaseHitscanClass);
 	BaseHitscan->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_r"));
 	BaseHitscan->SetOwner(this);
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	PlayerControllerRef = Cast<APlayerController>(GetController()); */
 }
 
 void ABasePlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//  뛰는 상태인지 판별하여 추가조건 실행
+/* 	//  뛰는 상태인지 판별하여 추가조건 실행
 	if (IsJog && IsWPressed)
 	{
 		// 뛰는 상태라면 언에임
@@ -109,7 +109,7 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		//*스킬e 범위 디버그
 		DrawDebugSphere(GetWorld(), GetUnderCursorLocation().ImpactPoint, 32, 16, FColor::Red, false, -1.f);
 		DrawDebugSphere(GetWorld(), GetUnderCursorLocation().ImpactPoint, 500, 64, FColor::Blue, false, -1.f); // 파란 디버그구
-	}
+	} */
 }
 
 void ABasePlayerCharacter::SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent)
@@ -128,7 +128,7 @@ void ABasePlayerCharacter::SetupPlayerInputComponent(class UInputComponent *Play
 }
 
 // Movement
-void ABasePlayerCharacter::Dash()
+/* void ABasePlayerCharacter::Dash()
 {
 	const FVector CurrentAcceleration = GetCharacterMovement()->GetCurrentAcceleration();
 	float CurrentAccelLength = CurrentAcceleration.SizeSquared();
@@ -282,7 +282,7 @@ void ABasePlayerCharacter::CombatQ()
 
 		//*기능 실현부
 
-/* 		// 라인트레이스로 경로설정
+		// 라인트레이스로 경로설정
 		FVector LineTraceLocation;
 		FRotator LineTraceRotation;
 		Controller->GetPlayerViewPoint(LineTraceLocation, LineTraceRotation);
@@ -297,7 +297,7 @@ void ABasePlayerCharacter::CombatQ()
 
 		// projectile spawn
 		ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, Location, Rotation);
-		ProjectileMissile->SetOwner(this); */
+		ProjectileMissile->SetOwner(this); 
 
 		// Play Muzzle effect
 		FVector MuzzleLocation = GetMesh()->GetSocketLocation("Muzzle_01");
@@ -512,5 +512,5 @@ float ABasePlayerCharacter::GetCooldownRPercent() const
 	else
 	{
 		return 0;
-	}
-}
+	} 
+}*/

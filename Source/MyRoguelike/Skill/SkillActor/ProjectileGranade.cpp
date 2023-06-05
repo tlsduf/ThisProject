@@ -32,7 +32,7 @@ void AProjectileGranade::OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, U
 	{
 		// UGameplayStatics::ApplyDamage(HitActor, Damage, OwnerController, this, nullptr);
 		// UGameplayStatics::ApplyPointDamage(HitActor, Damage, HitActor->GetActorLocation(), HitResult, OwnerController, OwnerPawn, nullptr);
-		UGameplayStatics::ApplyRadialDamage(GetWorld(), Damage, GetActorLocation(), Radius, nullptr, TArray<AActor *>(), this, OwnerController, false, ECC_WorldStatic);
+		UGameplayStatics::ApplyRadialDamage(GetWorld(), Damage, GetActorLocation(), RadialDamageRadius, nullptr, TArray<AActor *>(), this, OwnerController, DoFullDamage, ECC_WorldStatic);
 		if (HitParticles)
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, GetActorLocation(), GetActorRotation());

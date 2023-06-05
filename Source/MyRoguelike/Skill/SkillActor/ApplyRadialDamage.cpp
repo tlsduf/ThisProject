@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BaseMelee.h"
+#include "ApplyRadialDamage.h"
 
 #include <Components/SkeletalMeshComponent.h>
 #include <Kismet/GameplayStatics.h>
@@ -9,7 +9,7 @@
 #include <GameFramework/Character.h>
 
 // Sets default values
-ABaseMelee::ABaseMelee()
+AApplyRadialDamage::AApplyRadialDamage()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -25,18 +25,18 @@ ABaseMelee::ABaseMelee()
 }
 
 // Called when the game starts or when spawned
-void ABaseMelee::BeginPlay()
+void AApplyRadialDamage::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
 // Called every frame
-void ABaseMelee::Tick(float DeltaTime)
+void AApplyRadialDamage::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-void ABaseMelee::AttackCheck()
+void AApplyRadialDamage::AttackCheck()
 {
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)
@@ -66,24 +66,26 @@ void ABaseMelee::AttackCheck()
 		}
 	}
 
-	FVector TraceVec = OwnerPawn->GetActorForwardVector() * AttackRange;
-	FVector Center = OwnerPawn->GetActorLocation() + TraceVec * 0.5f;
-	float HalfHeight = AttackRange * 0.5f + AttackRadius;
-	FQuat CapsuleRot = FRotationMatrix::MakeFromZ(TraceVec).ToQuat();
-	FColor DrawColor = HasHit ? FColor::Green : FColor::Red;
-	float DebugLifeTime = 5.0f;
+	if (DebugOnOff)
+	{
+		FVector TraceVec = OwnerPawn->GetActorForwardVector() * AttackRange;
+		FVector Center = OwnerPawn->GetActorLocation() + TraceVec * 0.5f;
+		float HalfHeight = AttackRange * 0.5f + AttackRadius;
+		FQuat CapsuleRot = FRotationMatrix::MakeFromZ(TraceVec).ToQuat();
+		FColor DrawColor = HasHit ? FColor::Green : FColor::Red;
+		float DebugLifeTime = 5.0f;
 
-	DrawDebugCapsule(GetWorld(),
-					 Center,
-					 HalfHeight,
-					 AttackRadius,
-					 CapsuleRot,
-					 DrawColor,
-					 false,
-					 DebugLifeTime);
+		DrawDebugCapsule(GetWorld(),
+						 Center,
+						 HalfHeight,
+						 AttackRadius,
+						 CapsuleRot,
+						 DrawColor,
+						 false,
+						 DebugLifeTime);
+	}
 }
 
-void ABaseMelee::DebugCapsule()
+void AApplyRadialDamage::DebugCapsule()
 {
-
 }

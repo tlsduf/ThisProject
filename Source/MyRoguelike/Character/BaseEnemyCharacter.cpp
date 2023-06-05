@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BaseEnemyCharacter.h"
-#include "../Skill/ProjectileGranade.h"
-#include "../Skill/BaseMelee.h"
+#include "../Skill/SkillActor/ProjectileGranade.h"
+#include "../Skill/SkillActor/ApplyRadialDamage.h"
 
 #include <GameFramework/CharacterMovementComponent.h>
 
@@ -20,7 +20,7 @@ void ABaseEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Melee = GetWorld()->SpawnActor<ABaseMelee>(MeleeClass);
+	Melee = GetWorld()->SpawnActor<AApplyRadialDamage>(MeleeClass);
 	// BaseMelee->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_r"));
 	Melee->SetOwner(this);
 }

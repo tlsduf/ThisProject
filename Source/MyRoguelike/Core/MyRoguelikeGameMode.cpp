@@ -16,25 +16,6 @@
 
 AMyRoguelikeGameMode::AMyRoguelikeGameMode()
 {
-	static const FName PropertyEditor("PropertyEditor");
-	FPropertyEditorModule& PropertyModule = FModuleManager::GetModuleChecked<FPropertyEditorModule>(PropertyEditor);
-
-#define LOCTEXT_NAMESPACE "PropertySection"
-	TSharedRef<FPropertySection> Section1 = PropertyModule.FindOrCreateSection("MyRoguelikeCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-	Section1->AddCategory("Defensive");
-	Section1->AddCategory("Debug");
-	Section1->AddCategory("BaseMovement");
-	Section1->AddCategory("CombatProp");
-	Section1->AddCategory("Skill");
-
-	TSharedRef<FPropertySection> Section2 = PropertyModule.FindOrCreateSection("BasePlayerCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-	Section2->AddCategory("ThisMovement");
-	Section2->AddCategory("LM");
-	Section2->AddCategory("skill Q");
-	Section2->AddCategory("skill E");
-	Section2->AddCategory("skill R");
-#undef LOCTEXT_NAMESPACE
-
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter"));
 	if (PlayerPawnBPClass.Class != NULL)
@@ -59,13 +40,13 @@ void AMyRoguelikeGameMode::PawnKilled(APawn *PawnKilled)
 		EndGame(false);
 	}
 
-/* 	for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
+ 	for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
 	{
 		if (!Controller->IsDead())
 		{
 			return;
 		}
-	} */
+	} 
 
 	EndGame(true);
 	

@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "BaseMelee.generated.h"
+#include "ApplyRadialDamage.generated.h"
 
 UCLASS()
-class MYROGUELIKE_API ABaseMelee : public AActor
+class MYROGUELIKE_API AApplyRadialDamage : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ABaseMelee();
+	AApplyRadialDamage();
 
 	void AttackCheck();
 	void DebugCapsule();
@@ -30,16 +30,19 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent *Root;
 
-	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	UPROPERTY(VisibleAnywhere, Category = "MyCustomCategory")
 	USkeletalMeshComponent *WeaponMesh;
 
-    UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Melee, Meta = (AllowPrivateAccess = true))
+    UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
     float AttackRange;
     
-    UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Melee, Meta = (AllowPrivateAccess = true))
+    UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
     float AttackRadius;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
     float Damage = 10.f;
+
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
+	bool DebugOnOff = false;
 
 };

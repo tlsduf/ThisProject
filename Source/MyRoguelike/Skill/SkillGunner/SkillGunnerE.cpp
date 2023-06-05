@@ -1,24 +1,24 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "SkillGunnerQ.h"
-#include "ProjectileMissile.h"
-#include "../MyRoguelike.h"
-#include "../Character/MyRoguelikeCharacter.h"
+#include "SkillGunnerE.h"
+#include "../SkillActor/ProjectileMissile.h"
+#include "../../MyRoguelike.h"
+#include "../../Character/MyRoguelikeCharacter.h"
 
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
 
-USkillGunnerQ::USkillGunnerQ() : Super()
+USkillGunnerE::USkillGunnerE() : Super()
 {
 	PrimaryComponentTick.bCanEverTick = false; // 일단 Tick은 OFF 해두었습니다.
 }
 
-void USkillGunnerQ::BeginPlay()
+void USkillGunnerE::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void USkillGunnerQ::SkillTriggered()
+void USkillGunnerE::SkillTriggered()
 {
 	Super::SkillTriggered();
 

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "PlayerSkill.h"
+#include "../PlayerSkill.h"
 #include <CoreMinimal.h>
 #include "SkillGunnerQ.generated.h"
 
@@ -10,7 +10,6 @@
  *
  */
 class AProjectileMissile;
-
 
 UCLASS()
 class MYROGUELIKE_API USkillGunnerQ : public UPlayerSkill
@@ -28,7 +27,7 @@ public:
 	virtual void SkillTriggered() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "skill")
+	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	TSubclassOf<AProjectileMissile> ProjectileMissileClass;
 
 	UPROPERTY()

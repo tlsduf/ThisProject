@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseProjectile.h"
+#include "ProjectileBase.h"
 #include "ProjectileGranade.generated.h"
 
 /**
  *
  */
 UCLASS()
-class MYROGUELIKE_API AProjectileGranade : public ABaseProjectile
+class MYROGUELIKE_API AProjectileGranade : public AProjectileBase
 {
 	GENERATED_BODY()
 
@@ -24,6 +24,5 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult);
 
-	UPROPERTY(EditAnywhere)
-    float Radius = 500.f;
+
 };

@@ -32,21 +32,21 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent *Root;
 
-	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	UPROPERTY(VisibleAnywhere, Category = "MyCustomCategory")
 	USkeletalMeshComponent *WeaponMesh;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *MuzzleFlash;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *ImpactEffect;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float MaxRange = 10000;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float Damage = 10.f;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	class USoundBase *LaunchSound;
 };

@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseProjectile.h"
+#include "ProjectileBase.h"
 #include "ProjectileMissile.generated.h"
 
 /**
  *
  */
 UCLASS()
-class MYROGUELIKE_API AProjectileMissile : public ABaseProjectile
+class MYROGUELIKE_API AProjectileMissile : public AProjectileBase
 {
 	GENERATED_BODY()
 
