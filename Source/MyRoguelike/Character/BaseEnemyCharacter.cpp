@@ -2,7 +2,7 @@
 
 #include "BaseEnemyCharacter.h"
 #include "../Skill/SkillActor/ProjectileGranade.h"
-#include "../Skill/SkillActor/ApplyRadialDamage.h"
+#include "../Skill/PlayerSkill.h"
 
 #include <GameFramework/CharacterMovementComponent.h>
 
@@ -20,19 +20,12 @@ void ABaseEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Melee = GetWorld()->SpawnActor<AApplyRadialDamage>(MeleeClass);
-	// BaseMelee->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_r"));
-	Melee->SetOwner(this);
 }
 
 void ABaseEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (DebugOnOff)
-	{
-		Melee->DebugCapsule();
-	}
 }
 
 void ABaseEnemyCharacter::SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent)
@@ -48,16 +41,16 @@ void ABaseEnemyCharacter::MeleeAttackHandle()
 {
 	if (CanMeleeAttack)
 	{
-		GetWorldTimerManager().SetTimer(MeleeAttackTHandle, this, &ABaseEnemyCharacter::MeleeAttack, 0.50f, false);
+		GetWorldTimerManager().SetTimer(MeleeAttackTHandle, this, &ABaseEnemyCharacter::DoMeleeAttack, 0.50f, false);
 		CanMeleeAttack = false;
 		GetWorldTimerManager().SetTimer(CanMeleeAttackTHandle, this, &ABaseEnemyCharacter::SetCanMeleeAttackTrue, 1.10f, false);
 		InMeleeAttack = true;
 		GetWorldTimerManager().SetTimerForNextTick(this, &ABaseEnemyCharacter::SetInMeleeAttackFalse);
 	}
 }
-void ABaseEnemyCharacter::MeleeAttack()
+void ABaseEnemyCharacter::DoMeleeAttack()
 {
-	Melee->AttackCheck();
+	Skills[0]->SkillTriggered();
 }
 
 void ABaseEnemyCharacter::SetCanMeleeAttackTrue()

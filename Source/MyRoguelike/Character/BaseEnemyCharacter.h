@@ -11,7 +11,6 @@
  */
 
 class AProjectileGranade;
-class AApplyRadialDamage;
 
 UCLASS()
 class MYROGUELIKE_API ABaseEnemyCharacter : public AMyRoguelikeCharacter
@@ -28,11 +27,6 @@ protected:
 
 public:
 	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AApplyRadialDamage> MeleeClass;
-	UPROPERTY()
-	AApplyRadialDamage *Melee;
-
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
 	UPROPERTY()
 	AProjectileGranade *ProjectileGranade;
@@ -41,7 +35,7 @@ public:
 	UParticleSystem *GranadeMuzzleEffect;
 
 	void MeleeAttackHandle();
-	void MeleeAttack();
+	void DoMeleeAttack();
 
 	void SetCanMeleeAttackTrue();
 	void SetInMeleeAttackFalse();

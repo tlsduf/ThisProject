@@ -16,12 +16,6 @@ AApplyRadialDamage::AApplyRadialDamage()
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	SetRootComponent(Root);
-
-	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
-	WeaponMesh->SetupAttachment(Root);
-
-	AttackRadius = 50.0f;
-	AttackRange = 200.0f;
 }
 
 // Called when the game starts or when spawned
@@ -36,17 +30,20 @@ void AApplyRadialDamage::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AApplyRadialDamage::AttackCheck()
+void AApplyRadialDamage::AttackCheck(float Damage, float AttackRange, float AttackRadius, bool DebugOnOff)
 {
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
+	AController *OwnerController = OwnerPawn->GetInstigatorController();
 	if (OwnerPawn == nullptr)
+	{
+		Destroy();
 		return;
-	AController *OwnerController = OwnerPawn->GetController();
-	if (OwnerController == nullptr)
-		return;
+	}
 
 	FHitResult HitResult;
-	FCollisionQueryParams Params(NAME_None, false, this);
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+	Params.AddIgnoredActor(GetOwner());
 
 	bool HasHit = GetWorld()->SweepSingleByChannel(
 		HitResult,
@@ -57,10 +54,10 @@ void AApplyRadialDamage::AttackCheck()
 		FCollisionShape::MakeSphere(AttackRadius),
 		Params);
 
+	AActor *HitActor = HitResult.GetActor();
 	if (HasHit)
 	{
-		AActor *HitActor = HitResult.GetActor();
-		if (HitActor != nullptr)
+		if (HitActor != nullptr && HitActor != OwnerPawn)
 		{
 			UGameplayStatics::ApplyDamage(HitActor, Damage, OwnerController, this, nullptr);
 		}
@@ -72,7 +69,7 @@ void AApplyRadialDamage::AttackCheck()
 		FVector Center = OwnerPawn->GetActorLocation() + TraceVec * 0.5f;
 		float HalfHeight = AttackRange * 0.5f + AttackRadius;
 		FQuat CapsuleRot = FRotationMatrix::MakeFromZ(TraceVec).ToQuat();
-		FColor DrawColor = HasHit ? FColor::Green : FColor::Red;
+		FColor DrawColor = (HitActor != nullptr) ? FColor::Green : FColor::Red;
 		float DebugLifeTime = 5.0f;
 
 		DrawDebugCapsule(GetWorld(),
@@ -86,6 +83,10 @@ void AApplyRadialDamage::AttackCheck()
 	}
 }
 
-void AApplyRadialDamage::DebugCapsule()
+void AApplyRadialDamage::SelfDestroy()
 {
+	if (this != nullptr)
+	{
+		Destroy();
+	}
 }

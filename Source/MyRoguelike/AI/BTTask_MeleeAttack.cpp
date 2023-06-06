@@ -26,7 +26,7 @@ EBTNodeResult::Type UBTTask_MeleeAttack::ExecuteTask(UBehaviorTreeComponent &Own
         return EBTNodeResult::Failed;
     }
 
-    Character->MeleeAttack();
+    Character->DoMeleeAttack();
 
     return EBTNodeResult::Succeeded;
 }

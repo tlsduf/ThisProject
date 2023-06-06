@@ -10,39 +10,23 @@ UCLASS()
 class MYROGUELIKE_API AApplyRadialDamage : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	AApplyRadialDamage();
 
-	void AttackCheck();
-	void DebugCapsule();
+	void AttackCheck(float Damage, float AttackRange, float AttackRadius, bool DebugOnOff);
+	void SelfDestroy();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 
 private:
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent *Root;
-
-	UPROPERTY(VisibleAnywhere, Category = "MyCustomCategory")
-	USkeletalMeshComponent *WeaponMesh;
-
-    UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-    float AttackRange;
-    
-    UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-    float AttackRadius;
-
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-    float Damage = 10.f;
-
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	bool DebugOnOff = false;
-
 };
