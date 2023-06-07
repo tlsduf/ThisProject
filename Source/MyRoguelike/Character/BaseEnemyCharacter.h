@@ -18,6 +18,8 @@ class MYROGUELIKE_API ABaseEnemyCharacter : public AMyRoguelikeCharacter
 	GENERATED_BODY()
 
 public:
+	ABaseEnemyCharacter();
+
 	virtual void Tick(float DeltaTime) override;
 
 protected:
@@ -25,6 +27,8 @@ protected:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyCustomCategory", meta = (AllowPrivateAccess = "true"))
+	UPlayerSkill *MeleeAttack;
 public:
 	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;

@@ -24,20 +24,20 @@ UMyGameInstance::UMyGameInstance()
     Section2->AddCategory("skill E");
     Section2->AddCategory("skill R");
 
-    // [[아래 카테고리들은 대충 뭉뚱그려서 관리 할 카테고리들임 (따로 관리하기에는 너무 종류가 많고 이름도 다 다름)]]
+    // 아래 카테고리들은 대충 뭉뚱그려서 관리 할 카테고리들임 (따로 관리하기에는 너무 종류가 많고 이름도 다 다름)
     // - 몬스터
-    TSharedRef<FPropertySection> Section3 = PropertyModule.FindOrCreateSection("BaseEnemyCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-    Section3->AddCategory("MyCustomCategory");
+    TSharedRef<FPropertySection> SectionA1 = PropertyModule.FindOrCreateSection("BaseEnemyCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
+    SectionA1->AddCategory("MyCustomCategory");
     // - 스킬액터
-    TSharedRef<FPropertySection> Section4 = PropertyModule.FindOrCreateSection("ApplyRadialDamage", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-    Section4->AddCategory("MyCustomCategory");
-    TSharedRef<FPropertySection> Section5 = PropertyModule.FindOrCreateSection("BaseHitscan", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-    Section5->AddCategory("MyCustomCategory");
-    TSharedRef<FPropertySection> Section6 = PropertyModule.FindOrCreateSection("ProjectileBase", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-    Section6->AddCategory("MyCustomCategory");
+    TSharedRef<FPropertySection> SectionB1 = PropertyModule.FindOrCreateSection("ApplyRadialDamage", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
+    SectionB1->AddCategory("MyCustomCategory");
+    TSharedRef<FPropertySection> SectionB2 = PropertyModule.FindOrCreateSection("BaseHitscan", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
+    SectionB2->AddCategory("MyCustomCategory");
+    TSharedRef<FPropertySection> SectionB3 = PropertyModule.FindOrCreateSection("ProjectileBase", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
+    SectionB3->AddCategory("MyCustomCategory");
     // - 스킬로직
-    TSharedRef<FPropertySection> Section7 = PropertyModule.FindOrCreateSection("SkillGunnerQ", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
-    Section7->AddCategory("MyCustomCategory");
+    TSharedRef<FPropertySection> SectionC1 = PropertyModule.FindOrCreateSection("SkillGunnerQ", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
+    SectionC1->AddCategory("MyCustomCategory");
 #undef LOCTEXT_NAMESPACE
 }
 

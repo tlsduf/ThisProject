@@ -39,7 +39,7 @@ void UPlayerSkill::SkillOngoing()
 // =============================================================
 void UPlayerSkill::SkillTriggered()
 {
-	LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
+	//LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
 }
 
 // =============================================================

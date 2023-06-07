@@ -15,17 +15,19 @@
 #include <Kismet/GameplayStatics.h>
 #include <Particles/ParticleSystemComponent.h>
 
+ABaseEnemyCharacter::ABaseEnemyCharacter()
+{
+	MeleeAttack = CreateDefaultSubobject<UPlayerSkill>(TEXT("MeleeAttack"));
+}
 
 void ABaseEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 void ABaseEnemyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void ABaseEnemyCharacter::SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent)
@@ -50,7 +52,7 @@ void ABaseEnemyCharacter::MeleeAttackHandle()
 }
 void ABaseEnemyCharacter::DoMeleeAttack()
 {
-	Skills[0]->SkillTriggered();
+	MeleeAttack->SkillTriggered();
 }
 
 void ABaseEnemyCharacter::SetCanMeleeAttackTrue()

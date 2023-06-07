@@ -21,7 +21,7 @@ class AMyRoguelikeCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent *FollowCamera;
-	
+
 protected:
 	// 스킬을 할당받기 위한 배열입니다. (BP에서도 받을 수 있도록 TSubClassOf로 하였습니다)
 	UPROPERTY(EditAnywhere, Category = Skill)

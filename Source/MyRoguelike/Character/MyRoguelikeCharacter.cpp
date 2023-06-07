@@ -400,7 +400,6 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 		//================================================================
 		if (IsDead())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("He Died"));
 			LOG_SCREEN(TEXT("He Died"));
 			AMyRoguelikeGameMode *GameMode = GetWorld()->GetAuthGameMode<AMyRoguelikeGameMode>();
 			if (GameMode != nullptr)
@@ -416,7 +415,6 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 			GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision); // 캡슐콜리전 무효
 		}
 
-		UE_LOG(LogTemp, Warning, TEXT("Now Health : %f"), Health);
 		LOG_SCREEN(TEXT("Now Health : %f"), Health);
 		return Damage;
 	}
@@ -434,7 +432,7 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 			CanTakeDamageAnim = false;
 			GetWorldTimerManager().SetTimer(TakeDamageHandle, this, &AMyRoguelikeCharacter::SetCanTakeDamageAnimTrue, 0.3f, false);
 		}
-
+		LOG_SCREEN(TEXT("Damage Immune! || Now Health : %f"), Health);
 		return Damage;
 	}
 }
