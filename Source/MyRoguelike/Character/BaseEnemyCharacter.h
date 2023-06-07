@@ -10,7 +10,6 @@
  *
  */
 
-class AProjectileGranade;
 
 UCLASS()
 class MYROGUELIKE_API ABaseEnemyCharacter : public AMyRoguelikeCharacter
@@ -29,11 +28,11 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyCustomCategory", meta = (AllowPrivateAccess = "true"))
 	UPlayerSkill *MeleeAttack;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MyCustomCategory", meta = (AllowPrivateAccess = "true"))
+	UPlayerSkill *ProjectileAttack;
+
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
-	UPROPERTY()
-	AProjectileGranade *ProjectileGranade;
 
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *GranadeMuzzleEffect;
@@ -43,7 +42,8 @@ public:
 
 	void SetCanMeleeAttackTrue();
 	void SetInMeleeAttackFalse();
-	void ProjectileAttack();
+
+	void DoProjectileAttack();
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	bool InMeleeAttack = false;

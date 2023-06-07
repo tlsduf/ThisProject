@@ -193,6 +193,7 @@ void AMyRoguelikeCharacter::SkillTriggered(const uint8 &InSkillIndex)
 {
 	if (InSkillIndex < Skills.Num())
 	{
+		HandleCombatState();
 		Skills[InSkillIndex]->SkillTriggered();
 	}
 }

@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BaseHitscan.h"
+#include "HitscanBase.h"
 
 #include <Components/SkeletalMeshComponent.h>
 #include <Kismet/GameplayStatics.h>
@@ -8,7 +8,7 @@
 #include <GameFramework/Character.h>
 
 // Sets default values
-ABaseHitscan::ABaseHitscan()
+AHitscanBase::AHitscanBase()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -20,17 +20,17 @@ ABaseHitscan::ABaseHitscan()
 	WeaponMesh->SetupAttachment(Root);
 }
 
-void ABaseHitscan::BeginPlay()
+void AHitscanBase::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void ABaseHitscan::Tick(float DeltaTime)
+void AHitscanBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-void ABaseHitscan::Fire()
+void AHitscanBase::Fire(float Damage, float MaxRange)
 {
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)
@@ -78,7 +78,7 @@ void ABaseHitscan::Fire()
 	}
 }
 
-void ABaseHitscan::DebugLineTraceTick()
+void AHitscanBase::DebugLineTraceTick(float MaxRange)
 {
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)
@@ -108,7 +108,7 @@ void ABaseHitscan::DebugLineTraceTick()
 																	 // DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, 0, -1.f);
 }
 
-void ABaseHitscan::DebugLineTrace()
+void AHitscanBase::DebugLineTrace(float MaxRange)
 {
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)
@@ -137,3 +137,12 @@ void ABaseHitscan::DebugLineTrace()
 	DrawDebugSphere(GetWorld(), End, 10, 10, FColor::Blue, 0, 3.f); // 사거리 끝
 	DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, 0, 3.f);
 }
+
+void AHitscanBase::SelfDestroy()
+{
+	if (this != nullptr)
+	{
+		Destroy();
+	}
+}
+

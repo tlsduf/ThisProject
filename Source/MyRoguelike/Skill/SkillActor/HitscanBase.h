@@ -4,20 +4,21 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "BaseHitscan.generated.h"
+#include "HitscanBase.generated.h"
 
 UCLASS()
-class MYROGUELIKE_API ABaseHitscan : public AActor
+class MYROGUELIKE_API AHitscanBase : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	ABaseHitscan();
+	AHitscanBase();
 
-	void Fire();
-	void DebugLineTraceTick();
-	void DebugLineTrace();
+	void Fire(float Damage, float MaxRange);
+	void DebugLineTraceTick(float MaxRange);
+	void DebugLineTrace(float MaxRange);
+	void SelfDestroy();
 
 private:
 protected:
@@ -40,12 +41,6 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *ImpactEffect;
-
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	float MaxRange = 10000;
-
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	float Damage = 10.f;
 
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	class USoundBase *LaunchSound;

@@ -18,6 +18,13 @@ void UPlayerSkill::BeginPlay()
 	Super::BeginPlay();
 }
 
+void UPlayerSkill::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	// ...
+}
+
 // =============================================================
 // 스킬 사용 시작시 호출됩니다.
 // =============================================================
@@ -39,7 +46,7 @@ void UPlayerSkill::SkillOngoing()
 // =============================================================
 void UPlayerSkill::SkillTriggered()
 {
-	//LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
+	LOG_SCREEN(TEXT("%s, SkillTriggered!"), *GetName());
 }
 
 // =============================================================

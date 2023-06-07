@@ -27,7 +27,7 @@ EBTNodeResult::Type UBTTask_ProjectileAttack::ExecuteTask(UBehaviorTreeComponent
         return EBTNodeResult::Failed;
     }
 
-    Character->ProjectileAttack();
+    Character->DoProjectileAttack();
 
     return EBTNodeResult::Succeeded;
 }

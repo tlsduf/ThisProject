@@ -34,6 +34,6 @@ void USkillGunnerR::SkillTriggered()
 		SpawnPitch.Pitch = Rotation.Pitch + 15;
 	}
 	// projectile spawn
-	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, Location, FRotator(SpawnPitch.Pitch, Rotation.Yaw, 0));
+	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, Location, FRotator(SpawnPitch.Pitch, Cast<AMyRoguelikeCharacter>(GetOwner())->GetActorRotation().Yaw, 0));
 	ProjectileGranade->SetOwner(Cast<AMyRoguelikeCharacter>(GetOwner()));
 }
