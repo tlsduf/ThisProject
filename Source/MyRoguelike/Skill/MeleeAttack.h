@@ -21,11 +21,9 @@ public:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AApplyRadialDamage> MeleeClass;
 
-	UPROPERTY()
-	AApplyRadialDamage *Melee;
+	UPROPERTY(EditAnywhere, Category = Melee)
+	float AttackStartPoint = 0.f;
 
 	UPROPERTY(EditAnywhere, Category = Melee)
 	float AttackRange = 50.f;
