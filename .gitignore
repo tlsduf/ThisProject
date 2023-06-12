@@ -9,3 +9,5 @@
 *_BuiltData.uasset
 Binaries/Win64/
 *.pdb
+Platforms/HoloLens/Config/HoloLensEngine.ini
+Plugins/Developer/RiderLink/
