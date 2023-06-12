@@ -3,7 +3,6 @@
 #pragma once
 
 #include "PlayerSkill.h"
-#include <CoreMinimal.h>
 #include "HitscanFire.generated.h"
 
 /**
@@ -22,14 +21,9 @@ public:
 
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 private:
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHitscanBase> HitscanClass;
-
-	UPROPERTY()
-	AHitscanBase *Hitscan;
 
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	float MaxRange = 10000;
+	float AttackRange = 10000;
 
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float Damage = 10.f;

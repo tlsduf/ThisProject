@@ -1,13 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MeleeAttack.h"
-#include "SkillActor/ApplyRadialDamage.h"
-#include "../MyRoguelike.h"
-#include "../Character/MyRoguelikeCharacter.h"
 #include "../Util/UtilCollision.h"
 
 #include <GameFramework/PlayerController.h>
-#include <GameFramework/Character.h>
+#include <Kismet/GameplayStatics.h>
 
 void UMeleeAttack::BeginPlay()
 {
@@ -18,5 +15,20 @@ void UMeleeAttack::SkillTriggered()
 {
 	Super::SkillTriggered();
 
-	ApplyCapsuleDamage(Cast<APawn>(GetOwner()), Damage, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+	// 데미지 프레임워크를 위한 Instigator, Causer
+	APawn *ownerPawn = Cast<APawn>(GetOwner());
+	AController *ownerController = ownerPawn->GetInstigatorController();
+	if (ownerPawn == nullptr)
+	{
+		return;
+	}
+
+	// 충돌 검사
+	AActor *hitActor = UtilCollision::CapsuleSweepForward(ownerPawn, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+
+	// 데미지 정보 전달
+	if (hitActor != nullptr && hitActor != ownerPawn)
+	{
+		UGameplayStatics::ApplyDamage(hitActor, Damage, ownerController, ownerPawn, nullptr);
+	}
 }

@@ -3,7 +3,6 @@
 #pragma once
 
 #include "PlayerSkill.h"
-#include <CoreMinimal.h>
 #include "MeleeAttack.generated.h"
 
 /**
@@ -22,12 +21,15 @@ public:
 
 private:
 
+	// 소유한 액터의 위치와 캡슐이 스윕을 시작하는 위치 사이의 거리
 	UPROPERTY(EditAnywhere, Category = Melee)
 	float AttackStartPoint = 0.f;
 
+	// 스윕이 시작하는 위치와 스윕이 끝나는 위치 사이의 거리
 	UPROPERTY(EditAnywhere, Category = Melee)
 	float AttackRange = 50.f;
 
+	// 캡슐의 반지름
 	UPROPERTY(EditAnywhere, Category = Melee)
 	float AttackRadius = 100.f;
 

@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "SkillBase.h"
 #include "PlayerSkill.generated.h"
 
