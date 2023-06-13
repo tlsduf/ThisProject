@@ -208,7 +208,7 @@ protected:
 	FTimerHandle TakeDamageHandle;
 
 	// * 공격관련 변수
-	UPROPERTY(EditAnywhere, Category = "CombatProp")
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "CombatProp")
 	float FireRate = 0.25f;
 
 protected:

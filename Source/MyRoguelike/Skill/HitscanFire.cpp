@@ -29,11 +29,16 @@ void UHitscanFire::SkillTriggered()
 	}
 
 	// 충돌 검사
-	AActor *hitActor = UtilCollision::LineTraceForward(ownerPawn, AttackRange, DebugOnOff);
+	FHitResult hit = UtilCollision::LineTraceForward(ownerPawn, AttackRange, DebugOnOff);
+	AActor *hitActor = hit.GetActor();
 
 	// 데미지 정보 전달
 	if (hitActor != nullptr && hitActor != ownerPawn)
 	{
 		UGameplayStatics::ApplyDamage(hitActor, Damage, ownerController, ownerPawn, nullptr);
+		if (HitParticles)
+		{
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, hit.Location);
+		}
 	}
 }

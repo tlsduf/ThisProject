@@ -24,7 +24,8 @@ void UMeleeAttack::SkillTriggered()
 	}
 
 	// 충돌 검사
-	AActor *hitActor = UtilCollision::CapsuleSweepForward(ownerPawn, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+	FHitResult hit = UtilCollision::CapsuleSweepForward(ownerPawn, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+	AActor *hitActor = hit.GetActor();
 
 	// 데미지 정보 전달
 	if (hitActor != nullptr && hitActor != ownerPawn)

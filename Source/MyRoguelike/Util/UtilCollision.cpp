@@ -8,17 +8,18 @@
 
 
 // =============================================================
-// 전방으로 캡슐스윕을 해 히트된 액터를 받아온다 SweepSingleByChannel
+// 전방으로 캡슐스윕을 해 히트정보를 받아온다 SweepSingleByChannel
 // TODO 싱글말고 멀티로 바꾸면 좋을것 같음
+// warning OwnerPawn 이 nullptr일 경우 예외처리를 해야되는데 어캐함
 // =============================================================
-AActor *UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
+FHitResult UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
 {
+	FHitResult hit;
 	if (OwnerPawn == nullptr)
 	{
-		return nullptr;
+		return hit;
 	}
-
-	FHitResult hit;
+	
 	FCollisionQueryParams params;
 	params.AddIgnoredActor(OwnerPawn);
 
@@ -53,19 +54,20 @@ AActor *UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadiu
 						 debugLifeTime);
 	}
 
-	return hitActor;
+	return hit;
 }
 
 
 // =============================================================
-// 전방으로 라인트레이스를 해 히트된 액터를 받아온다 LineTraceSingleByChannel
+// 전방으로 라인트레이스를 해 히트정보를 받아온다 LineTraceSingleByChannel
 // =============================================================
-AActor *UtilCollision::LineTraceForward(APawn *OwnerPawn, float InAttackRange, bool InDebugOnOff)
+FHitResult UtilCollision::LineTraceForward(APawn *OwnerPawn, float InAttackRange, bool InDebugOnOff)
 {
 	AController *OwnerController = OwnerPawn->GetInstigatorController();
+	FHitResult hit;
 	if (OwnerPawn == nullptr)
 	{
-		return nullptr;
+		return hit;
 	}
 
 	FVector location;
@@ -73,7 +75,6 @@ AActor *UtilCollision::LineTraceForward(APawn *OwnerPawn, float InAttackRange, b
 	OwnerController->GetPlayerViewPoint(location, rotation);
 	FVector end = location + rotation.Vector() * InAttackRange;
 	
-	FHitResult hit;
 	FCollisionQueryParams params;
 	params.AddIgnoredActor(OwnerPawn);
 
@@ -106,5 +107,5 @@ AActor *UtilCollision::LineTraceForward(APawn *OwnerPawn, float InAttackRange, b
 						 debugLifeTime);
 	}
 	
-	return hitActor;
+	return hit;
 }

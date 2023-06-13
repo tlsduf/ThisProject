@@ -31,6 +31,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Debug)
 	bool DebugOnOff = true;
 
+	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
+	UParticleSystem *HitParticles;
+
 public:
 	virtual void SkillTriggered() override;
 };
