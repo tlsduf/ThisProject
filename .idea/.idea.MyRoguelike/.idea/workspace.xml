@@ -9,13 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="aee0822f-8417-40cb-8d20-4ab5ff41a887" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/Montage_Gunner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/Montage_Gunner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Skeleton/UE4_Mannequin_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Skeleton/UE4_Mannequin_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/AI/BT_EnemyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/AI/BT_EnemyAI.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/Wraith_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/Wraith_AnimBlueprint.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_HitscanFire.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_HitscanFire.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_LaneSuper.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_LaneSuper.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BaseEnemyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BaseEnemyCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RD.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RD.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderBlueprint.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderBlueprint.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderGameControl.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderGameControl.dll" afterDir="false" />
@@ -99,12 +97,6 @@
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.exp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.exp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.lib" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/HitscanFire.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/HitscanFire.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/HitscanFire.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/HitscanFire.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +206,8 @@
       <workItem from="1686634465270" duration="2283000" />
       <workItem from="1686640210473" duration="1000" />
       <workItem from="1686640298999" duration="4509000" />
+      <workItem from="1686720373663" duration="1452000" />
+      <workItem from="1686729030021" duration="1551000" />
     </task>
     <servers />
   </component>
