@@ -76,8 +76,7 @@ public:
 	void Jog();
 	void WPressed();
 	void WReleased();
-
-protected:
+	
 	// RotatePawn
 	void RotatePawn(float DeltaTime);
 
@@ -127,8 +126,7 @@ public:
 	float GetDamage() const;
 
 	float DamageText;
-
-protected:
+	
 	// * 디버그on/off
 	UPROPERTY(EditDefaultsOnly, Category = "Debug")
 	bool DebugOnOff = 0;

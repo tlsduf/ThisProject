@@ -23,6 +23,4 @@ public:
 protected:
 
 	virtual void _OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult) override;
-
-
 };

@@ -1,12 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SkillGunnerRM.h"
-#include "../SkillActor/ProjectileGranade.h"
-#include "../../MyRoguelike.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
 #include <GameFramework/PlayerController.h>
-#include <GameFramework/Character.h>
 
 USkillGunnerRM::USkillGunnerRM() : Super()
 {
@@ -18,22 +15,29 @@ void USkillGunnerRM::BeginPlay()
 	Super::BeginPlay();
 }
 
-void USkillGunnerRM::SkillTriggered()
+void USkillGunnerRM::SkillStarted()
 {
-	Super::SkillTriggered();
+	Super::SkillStarted();
 
-	FVector Location = Cast<AMyRoguelikeCharacter>(GetOwner())->GetMesh()->GetSocketLocation("Granade_socket");
-	const FRotator Rotation = GameGetPlayerController()->GetControlRotation();
-	FRotator SpawnPitch = FRotator(0, 0, 0);
-	if (60 <= Rotation.Pitch && Rotation.Pitch <= 90)
-	{
-		SpawnPitch.Pitch = 75;
-	}
-	else
-	{
-		SpawnPitch.Pitch = Rotation.Pitch + 15;
-	}
-	// projectile spawn
-	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, Location, FRotator(SpawnPitch.Pitch, Rotation.Yaw, 0));
-	ProjectileGranade->SetOwner(Cast<AMyRoguelikeCharacter>(GetOwner()));
+	auto Char = Cast<AMyRoguelikeCharacter>(GetOwner());
+	
+	Char->SetThisSpeed(400);
+	Char->MyTargetArmLength = 100.0f;
+	Char->MyTargetArmLocation = FVector(0, 50, 80);
+	Char->MyCameraLocation = FVector(0, 0, 0);
+
+	Char->CanZoom = true;
+}
+void USkillGunnerRM::SkillCompleted()
+{
+	Super::SkillCompleted();
+	
+	auto Char = Cast<AMyRoguelikeCharacter>(GetOwner());
+	
+	Char->SetThisSpeed(600);
+	Char->MyTargetArmLength = 400.0f;
+	Char->MyTargetArmLocation = FVector(0, 0, 55);
+	Char->MyCameraLocation = FVector(0, 0, 55);
+
+	Char->CanZoom = true;
 }

@@ -9,7 +9,7 @@
 /**
  *
  */
-class AProjectileGranade;
+
 
 
 UCLASS()
@@ -25,12 +25,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	virtual void SkillTriggered() override;
+	virtual void SkillStarted() override;
+	virtual void SkillCompleted() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
-
-	UPROPERTY()
-	AProjectileGranade *ProjectileGranade;
+	bool IsZoom = false;
 };

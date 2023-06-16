@@ -9,7 +9,7 @@
 /**
  *
  */
-class AProjectileGranade;
+
 
 
 UCLASS()
@@ -28,9 +28,5 @@ public:
 	virtual void SkillTriggered() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
 
-	UPROPERTY()
-	AProjectileGranade *ProjectileGranade;
 };

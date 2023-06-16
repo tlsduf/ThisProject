@@ -26,33 +26,49 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
+	// 루트 씬 컴포넌트
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent *Root;
+	
+	// 충돌을 담당하는 캡슐
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+	class UCapsuleComponent *CapsuleComponent;
+
+	// 외형만 보여주는 메쉬
 	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	UStaticMeshComponent *ProjectileMesh;
 
+	// UProjectileMovementComponent 투사체의 움직임을 제어해주는 언리얼함수
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyCustomCategory")
 	class UProjectileMovementComponent *ProjectileMovementComponent;
 
+	// 투사체 생성-발사 이펙트 // 생성 이펙트와 발사이펙트를 Base에 구분할 것인가? 생성이펙트가 필요하다면 자손클래스에서 따로 할당할 것인지
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	UParticleSystem *MuzzleParticles;
+	UParticleSystem *ShotParticles;
 
+	// 투사체 hit 이펙트 // 파괴 시 이펙트와 오버랩이벤트의 이펙트를 따로 해야하는지
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	UParticleSystem *HitParticles;
 
+	// 트레일파티클
 	UPROPERTY(VisibleAnywhere, Category = "MyCustomCategory")
 	class UParticleSystemComponent *TrailParticles;
 
+	// 발사 사운드
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	USoundBase *MuzzleSound;
-
+	USoundBase *ShotSound;
+	
+	// hit 사운드
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	USoundBase *HitSound;
 
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+	//UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
+	//TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
 
 	// applydamage 프레임워크 ApplyRadialDamage 의 경우 구의 반지름
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float RadialDamageRadius = 500.f;
+	
 	// applydamage 프레임워크 ApplyRadialDamage 의 경우 중심에서 멀어질수록 약해지는 데미지를 입힐지말지
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	bool DoFullDamage = true;
@@ -69,6 +85,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float AttackRadius = 100.f;
 
+	// 데미지 // 데이터테이블에서 이곳으로 값을 받아올 것인
 	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
 	float Damage = 10.f;
 

@@ -2,7 +2,9 @@
 
 #include "ProjectileBase.h"
 #include "../../Util/UtilCollision.h"
+#include "../../Common/GameLog.h"
 
+#include <Components/CapsuleComponent.h>
 #include <Components/StaticMeshComponent.h>
 #include <GameFramework/ProjectileMovementComponent.h>
 #include <GameFramework/DamageType.h>
@@ -16,15 +18,19 @@ AProjectileBase::AProjectileBase()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	SetRootComponent(Root);
+	
+	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
+	CapsuleComponent->InitCapsuleSize(44.f, 60.f);
+	CapsuleComponent->SetupAttachment(Root);
+	
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
-	RootComponent = ProjectileMesh;
+	ProjectileMesh->SetupAttachment(Root);
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
 	ProjectileMovementComponent->MaxSpeed = 1300.f;
 	ProjectileMovementComponent->InitialSpeed = 1300.f;
-
-	TrailParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
-	TrailParticles->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -32,13 +38,13 @@ void AProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (MuzzleParticles)
+	if (ShotParticles)
 	{
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), MuzzleParticles, GetActorLocation(), GetActorRotation());
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ShotParticles, GetActorLocation(), GetActorRotation());
 	}
-	if (MuzzleSound)
+	if (ShotSound)
 	{
-		UGameplayStatics::PlaySoundAtLocation(this, MuzzleSound, GetActorLocation());
+		UGameplayStatics::PlaySoundAtLocation(this, ShotSound, GetActorLocation());
 	}
 }
 
@@ -57,6 +63,7 @@ void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPri
 // 오버랩시 호출해서 데미지 적용, 투사체 파괴 등을 수행
 void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
 {
+	LOG_SCREEN(TEXT("OnHit"));
 	APawn *ownerPawn = Cast<APawn>(GetOwner());
 	AController *ownerController = ownerPawn->GetController();
 	if (ownerPawn == nullptr)
@@ -92,8 +99,10 @@ void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPr
 	{
 		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
 	}
+	/*
 	if (HitCameraShakeClass)
 	{
 		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
 	}
+	*/
 }

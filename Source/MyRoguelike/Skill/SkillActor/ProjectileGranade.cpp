@@ -2,6 +2,7 @@
 
 #include "ProjectileGranade.h"
 
+#include <Components/CapsuleComponent.h>
 #include <GameFramework/DamageType.h>
 
 
@@ -13,7 +14,7 @@ void AProjectileGranade::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectileGranade::OnHit);
+	CapsuleComponent->OnComponentHit.AddDynamic(this, &AProjectileGranade::OnHit);
 }
 
 void AProjectileGranade::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
