@@ -2,12 +2,8 @@
 
 #include "MyRoguelikeGameMode.h"
 #include "../Logic/BaseEnemyAIController.h"
-#include "../Logic/RoguelikePlayerController.h"
-#include "../Character/MyRoguelikeCharacter.h"
-
 
 #include <UObject/ConstructorHelpers.h>
-#include <Kismet/GameplayStatics.h>
 #include <EngineUtils.h>
 #include <GameFramework/Controller.h>
 #include <Modules/ModuleManager.h>

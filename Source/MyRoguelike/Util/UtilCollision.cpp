@@ -12,9 +12,9 @@
 // TODO 싱글말고 멀티로 바꾸면 좋을것 같음
 // warning OwnerPawn 이 nullptr일 경우 예외처리를 해야되는데 어캐함
 // =============================================================
-FHitResult UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
+TArray<FHitResult> UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
 {
-	FHitResult hit;
+	TArray<FHitResult> hit;
 	if (OwnerPawn == nullptr)
 	{
 		return hit;
@@ -23,7 +23,7 @@ FHitResult UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRa
 	FCollisionQueryParams params;
 	params.AddIgnoredActor(OwnerPawn);
 
-	bool hasHit = GameGetWorld()->SweepSingleByChannel(
+	bool hasHit = GameGetWorld()->SweepMultiByChannel(
 		hit,
 		OwnerPawn->GetActorLocation() + OwnerPawn->GetActorForwardVector() * InAttackStartPoint,
 		OwnerPawn->GetActorLocation() + OwnerPawn->GetActorForwardVector() * InAttackStartPoint + OwnerPawn->GetActorForwardVector() * InAttackRange,
@@ -32,7 +32,12 @@ FHitResult UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRa
 		FCollisionShape::MakeSphere(InAttackRadius),
 		params);
 
-	AActor *hitActor = hit.GetActor();
+	AActor *hitActor = nullptr;
+	if(!hit.IsEmpty())
+	{
+		auto It = hit.CreateIterator();
+		hitActor = It->GetActor();
+	}
 
 	// 디버그 캡슐을 그린다. Red - hit 실패/ Green - hit 성공
 	if (InDebugOnOff)
@@ -54,6 +59,54 @@ FHitResult UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRa
 						 debugLifeTime);
 	}
 
+	return hit;
+}
+TArray<FHitResult> UtilCollision::CapsuleSweepForward(AActor *OwnerActor, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
+{
+	TArray<FHitResult> hit;
+	if (OwnerActor == nullptr)
+	{
+		return hit;
+	}
+	
+	FCollisionQueryParams params;
+	params.AddIgnoredActor(OwnerActor);
+
+	bool hasHit = GameGetWorld()->SweepMultiByChannel(
+		hit,
+		OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint,
+		OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint + OwnerActor->GetActorForwardVector() * InAttackRange,
+		FQuat::Identity,
+		ECollisionChannel::ECC_GameTraceChannel6,
+		FCollisionShape::MakeSphere(InAttackRadius),
+		params);
+
+	AActor *hitActor = nullptr;
+	if(!hit.IsEmpty())
+	{
+		auto It = hit.CreateIterator();
+		hitActor = It->GetActor();
+	}
+
+	// 디버그 캡슐을 그린다. Red - hit 실패/ Green - hit 성공
+	if (InDebugOnOff)
+	{
+		FVector traceVec = OwnerActor->GetActorForwardVector() * InAttackRange;
+		FVector center = OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint + traceVec * 0.5f;
+		float halfHeight = InAttackRange * 0.5f + InAttackRadius;
+		FQuat capsuleRot = FRotationMatrix::MakeFromZ(traceVec).ToQuat();
+		FColor drawColor = (hitActor != nullptr) ? FColor::Green : FColor::Red;
+		float debugLifeTime = 5.0f;
+
+		DrawDebugCapsule(GameGetWorld(),
+						 center,
+						 halfHeight,
+						 InAttackRadius,
+						 capsuleRot,
+						 drawColor,
+						 false,
+						 debugLifeTime);
+	}
 	return hit;
 }
 

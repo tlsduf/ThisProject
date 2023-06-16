@@ -1,13 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ProjectileBase.h"
+#include "../../Util/UtilCollision.h"
 
 #include <Components/StaticMeshComponent.h>
 #include <GameFramework/ProjectileMovementComponent.h>
 #include <GameFramework/DamageType.h>
 #include <Kismet/GameplayStatics.h>
 #include <Particles/ParticleSystemComponent.h>
-#include <GameFramework/Character.h>
+
 
 // Sets default values
 AProjectileBase::AProjectileBase()
@@ -45,4 +46,54 @@ void AProjectileBase::BeginPlay()
 void AProjectileBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+// _OnHit 호출용으로 사용
+void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
+{
+	_OnHit(HitComp, HitActor, OtherComp, NormalImpulse, HitResult);
+}
+
+// 오버랩시 호출해서 데미지 적용, 투사체 파괴 등을 수행
+void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
+{
+	APawn *ownerPawn = Cast<APawn>(GetOwner());
+	AController *ownerController = ownerPawn->GetController();
+	if (ownerPawn == nullptr)
+	{
+		Destroy();
+		return;
+	}
+
+	Destroy();
+	if (HitActor && HitActor != this && HitActor != ownerPawn)
+	{
+		if(DoRadialDamage)
+		{
+			TArray <FHitResult> hit = UtilCollision::CapsuleSweepForward(this, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+			for (auto It = hit.CreateIterator(); It; It++)
+			{
+				HitActor = It->GetActor();
+				UGameplayStatics::ApplyDamage(HitActor, Damage, ownerController, ownerPawn, nullptr);
+			}
+		}
+		else
+		{
+			UGameplayStatics::ApplyDamage(HitActor, Damage, ownerController, ownerPawn, nullptr);
+			// UGameplayStatics::ApplyPointDamage(HitActor, Damage, HitActor->GetActorLocation(), HitResult, ownerController, OwnerPawn, nullptr);
+			// UGameplayStatics::ApplyRadialDamage(GetWorld(), Damage, GetActorLocation(), RadialDamageRadius, nullptr, TArray<AActor *>(), this, ownerController, DoFullDamage, ECC_WorldStatic);
+		}
+	}
+	if (HitParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, GetActorLocation(), GetActorRotation());
+	}
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+	}
+	if (HitCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+	}
 }

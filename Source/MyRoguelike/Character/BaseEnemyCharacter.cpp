@@ -1,10 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BaseEnemyCharacter.h"
-#include "../Skill/SkillActor/ProjectileGranade.h"
 #include "../Skill/PlayerSkill.h"
-
-#include <GameFramework/CharacterMovementComponent.h>
 
 #include <Components/InputComponent.h>
 #include <GameFramework/Controller.h>

@@ -10,7 +10,7 @@
 void ABaseEnemyAIController::BeginPlay()
 {
     Super::BeginPlay();
-    //¹Ø ±â´ÉÀº OnPossess·Î ¿Å±è. ½ºÆùÇÑ ¾×ÅÍ¿¡ ÄÁÆ®·Ñ·¯ ºùÀÇ½Ã Å©·¡½¬°¡ ³ª±â ¶§¹®ÀÓ ¤§¤§...
+    //ë°‘ ê¸°ëŠ¥ì€ OnPossessë¡œ ì˜®ê¹€. ìŠ¤í°í•œ ì•¡í„°ì— ì»¨íŠ¸ë¡¤ëŸ¬ ë¹™ì˜ì‹œ í¬ë˜ì‰¬ê°€ ë‚˜ê¸° ë•Œë¬¸ì„ ã„·ã„·...
     /*
     if (AIBehavior != nullptr)
     {

@@ -15,10 +15,7 @@
 
 #include <TimerManager.h>
 #include <DrawDebugHelpers.h>
-#include <Kismet/GameplayStatics.h>
-#include <Particles/ParticleSystemComponent.h>
 #include <EnhancedInputComponent.h>
-#include <EnhancedInputSubsystems.h>
 #include <Engine/DamageEvents.h>
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(MyRoguelikeCharacter)
@@ -345,12 +342,11 @@ void AMyRoguelikeCharacter::WReleased()
 // TakeDamageHandle
 float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const &DamageEvent, class AController *EventInstigator, AActor *DamageCauser)
 {
+	float Damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	// DamageImmunity가 false 일 때 데미지계산
 	if (!DamageImmunity && EventInstigator != Controller)
 	{
 		HandleCombatState();
-		float Damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-
 		//================================================================
 		// 1.데미지이벤트 판별
 		//================================================================
@@ -422,7 +418,6 @@ float AMyRoguelikeCharacter::TakeDamage(float DamageAmount, struct FDamageEvent 
 	else // DamageImmunity가 true 일 때 Damage = 0
 	{
 		HandleCombatState();
-		float Damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 		Damage = 0.f;
 
 		// 애니메이션 플레이 //bool 변수로 0.3초마다 애니메이션 실행

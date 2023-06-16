@@ -22,7 +22,7 @@ void UHitscanFire::SkillTriggered()
 
 	// 데미지 프레임워크를 위한 Instigator, Causer
 	APawn *ownerPawn = Cast<APawn>(GetOwner());
-	AController *ownerController = ownerPawn->GetInstigatorController();
+	AController *ownerController = ownerPawn->GetController();
 	if (ownerPawn == nullptr)
 	{
 		return;
@@ -36,9 +36,9 @@ void UHitscanFire::SkillTriggered()
 	if (hitActor != nullptr && hitActor != ownerPawn)
 	{
 		UGameplayStatics::ApplyDamage(hitActor, Damage, ownerController, ownerPawn, nullptr);
-		if (HitParticles)
-		{
-			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, hit.Location);
-		}
+	}
+	if (HitParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, hit.Location);
 	}
 }

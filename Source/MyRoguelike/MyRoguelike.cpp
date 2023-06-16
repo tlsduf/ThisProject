@@ -4,8 +4,6 @@
 #include "Modules/ModuleManager.h"
 
 #include <GameFramework/Actor.h>
-#include <Kismet/GameplayStatics.h>
-
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, MyRoguelike, "MyRoguelike" );
 

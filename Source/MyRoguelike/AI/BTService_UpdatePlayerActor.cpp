@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BTService_UpdatePlayerActor.h"
-#include "../Character/BaseEnemyCharacter.h"
 #include "../Logic/BaseEnemyAIController.h"
 
 #include <BehaviorTree/BlackboardComponent.h>

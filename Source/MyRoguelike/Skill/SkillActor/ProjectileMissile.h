@@ -20,8 +20,9 @@ public:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult);
+protected:
+
+	virtual void _OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult) override;
+
 
 };
