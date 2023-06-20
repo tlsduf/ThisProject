@@ -66,4 +66,13 @@ void UBTService_UpdatePlayerActor::TickNode(UBehaviorTreeComponent &OwnerComp, u
     {
         OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("IsLive"), true);
     }
+
+    if (Controller->PlaySpawnAnim())
+    {
+        OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("PlaySpawnAnim"), false);
+    }
+    else
+    {
+        OwnerComp.GetBlackboardComponent()->SetValueAsBool(TEXT("PlaySpawnAnim"), true);
+    }
 }

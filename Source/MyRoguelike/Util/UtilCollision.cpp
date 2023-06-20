@@ -5,11 +5,11 @@
 
 #include <CollisionShape.h>
 #include <DrawDebugHelpers.h>
+#include <GameFramework/PlayerController.h>
 
 
 // =============================================================
 // 전방으로 캡슐스윕을 해 히트정보를 받아온다 SweepSingleByChannel
-// TODO 싱글말고 멀티로 바꾸면 좋을것 같음
 // warning OwnerPawn 이 nullptr일 경우 예외처리를 해야되는데 어캐함
 // =============================================================
 TArray<FHitResult> UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
@@ -116,7 +116,7 @@ TArray<FHitResult> UtilCollision::CapsuleSweepForward(AActor *OwnerActor, float 
 // =============================================================
 FHitResult UtilCollision::LineTraceForward(APawn *OwnerPawn, float InAttackRange, bool InDebugOnOff)
 {
-	AController *OwnerController = OwnerPawn->GetInstigatorController();
+	AController *OwnerController = OwnerPawn->GetController();
 	FHitResult hit;
 	if (OwnerPawn == nullptr)
 	{

@@ -87,6 +87,7 @@ private:
 	void OnInputSkillCompleted(const FInputActionInstance &InInstance);
 	void OnInputSkillCanceled(const FInputActionInstance &InInstance);
 
+public:
 	void SetPlayerEnabledState(bool bPlayerEnabled);
 
 private:

@@ -20,12 +20,21 @@ protected:
 
 	virtual void OnPossess(APawn* InPawn) override;
 
+private:
+	UPROPERTY(EditAnywhere)
+	class UBehaviorTree *AIBehavior;
+
+	UPROPERTY(EditAnywhere)
+	float SpawnTime = 1.0f;
+
+	FTimerHandle SpawnAnimTHandle;
+	
+	bool GPlaySpawnAnim = false;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	bool IsDead() const;
-
-private:
-	UPROPERTY(EditAnywhere)
-	class UBehaviorTree *AIBehavior;	
+	bool PlaySpawnAnim();
+	void SetTruePlaySpawnAnim();
+	
 };

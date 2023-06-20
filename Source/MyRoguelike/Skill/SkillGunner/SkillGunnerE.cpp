@@ -5,8 +5,8 @@
 #include "../../MyRoguelike.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
-#include <GameFramework/PlayerController.h>
-#include <GameFramework/Character.h>
+
+
 
 USkillGunnerE::USkillGunnerE() : Super()
 {
@@ -21,21 +21,4 @@ void USkillGunnerE::BeginPlay()
 void USkillGunnerE::SkillTriggered()
 {
 	Super::SkillTriggered();
-
-	// 라인트레이스로 최종경로설정
-	FVector LineTraceLocation;
-	FRotator LineTraceRotation;
-	GameGetPlayerController()->GetPlayerViewPoint(LineTraceLocation, LineTraceRotation);
-
-	FVector End = LineTraceLocation + LineTraceRotation.Vector() * 10000;
-	FHitResult HitResult;
-
-	bool HasHit = GetWorld()->LineTraceSingleByChannel(HitResult, LineTraceLocation, End, ECollisionChannel::ECC_GameTraceChannel1);
-	FVector Location = Cast<AMyRoguelikeCharacter>(GetOwner())->GetMesh()->GetSocketLocation("canon_socket");
-	FVector ThisZeroVector = HasHit ? HitResult.Location - Location : End - Location;
-	FRotator Rotation = ThisZeroVector.Rotation();
-
-	// projectile spawn
-	ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, Location, Rotation);
-	ProjectileMissile->SetOwner(Cast<AMyRoguelikeCharacter>(GetOwner()));
 }

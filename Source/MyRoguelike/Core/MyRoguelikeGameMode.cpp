@@ -1,12 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "MyRoguelikeGameMode.h"
-#include "../Logic/BaseEnemyAIController.h"
+#include "../Logic/RoguelikePlayerController.h"
 
 #include <UObject/ConstructorHelpers.h>
-#include <EngineUtils.h>
-#include <GameFramework/Controller.h>
-#include <Modules/ModuleManager.h>
 
 
 
@@ -29,14 +26,20 @@ void AMyRoguelikeGameMode::BeginPlay()
 
 void AMyRoguelikeGameMode::PawnKilled(APawn *PawnKilled)
 {
-	UE_LOG(LogTemp, Warning, TEXT("PawnKilled Act"));
-	APlayerController *PlayerController = Cast<APlayerController>(PawnKilled->GetController());
+	if(PawnKilled->GetController() != GameGetPlayerController())
+	{
+		LOG_SCREEN(TEXT("EnemyDied"))
+		return;
+	}
+	auto PlayerController = Cast<ARoguelikePlayerController>(PawnKilled->GetController());
 	if (PlayerController != nullptr)
 	{
+		LOG_SCREEN(TEXT("Disable Input"))
+		PlayerController->SetPlayerEnabledState(false);
 		EndGame(false);
 	}
 
- 	for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
+ 	/*for (ABaseEnemyAIController *Controller : TActorRange<ABaseEnemyAIController>(GetWorld()))
 	{
 		if (!Controller->IsDead())
 		{
@@ -44,7 +47,7 @@ void AMyRoguelikeGameMode::PawnKilled(APawn *PawnKilled)
 		}
 	} 
 
-	EndGame(true);
+	EndGame(true);*/
 	
 }
 
@@ -54,5 +57,5 @@ void AMyRoguelikeGameMode::HandleGameStart()
 
 void AMyRoguelikeGameMode::EndGame(bool bIsPlayerWinner)
 {
-	UE_LOG(LogTemp, Warning, TEXT("%s"), bIsPlayerWinner);
+	LOG_SCREEN(TEXT("YouDied"));
 }

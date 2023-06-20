@@ -4,6 +4,7 @@
 #include "Modules/ModuleManager.h"
 
 #include <GameFramework/Actor.h>
+#include <Kismet/GameplayStatics.h>
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, MyRoguelike, "MyRoguelike" );
 
@@ -27,6 +28,35 @@ UWorld* GameGetWorld( UObject* InObject )
 		return nullptr;
 	}
 	return world->World();
+}
+
+// =============================================================
+// 현재 월드가 프리뷰 월드 ( 블루 프린트 월드 ) 인지 반환한다.
+// 
+// 사용시 주의사항
+// 에디터단에서 테스트를 위한 코드이므로 실제 사용시
+// #if WITH_EDITOR
+// #if WITH_EDITORONOLY_DATA
+// 같은 전처리기를 활용하여 게임 월드 에서는 되도록 호출 자체를 하지 않도록 짜는게 좋습니다
+// =============================================================
+bool GameIsPreviewWorld( UWorld* InWorld )
+{
+#if WITH_EDITOR
+	if ( InWorld )
+		return InWorld->IsPreviewWorld();
+#endif
+
+	return false;
+}
+
+// =============================================================
+// 게임 인스턴스를 반환한다.
+// =============================================================
+UGameInstance* GameGetGameInstance( UWorld* InWorld )
+{
+	UWorld* world = InWorld ? InWorld : GameGetWorld();
+
+	return UGameplayStatics::GetGameInstance( world );
 }
 
 // =============================================================

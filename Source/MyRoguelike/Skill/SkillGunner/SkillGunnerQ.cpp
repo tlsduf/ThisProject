@@ -7,6 +7,7 @@
 
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
+#include <Components/SkeletalMeshComponent.h>
 
 USkillGunnerQ::USkillGunnerQ() : Super()
 {
@@ -22,20 +23,22 @@ void USkillGunnerQ::SkillTriggered()
 {
 	Super::SkillTriggered();
 
+	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	
 	// 라인트레이스로 최종경로설정
-	FVector LineTraceLocation;
-	FRotator LineTraceRotation;
-	GameGetPlayerController()->GetPlayerViewPoint(LineTraceLocation, LineTraceRotation);
+	FVector lineTraceLocation;
+	FRotator lineTraceRotation;
+	GameGetPlayerController()->GetPlayerViewPoint(lineTraceLocation, lineTraceRotation);
 
-	FVector End = LineTraceLocation + LineTraceRotation.Vector() * 10000;
-	FHitResult HitResult;
+	FVector end = lineTraceLocation + lineTraceRotation.Vector() * 10000;
+	FHitResult hit;
 
-	bool HasHit = GetWorld()->LineTraceSingleByChannel(HitResult, LineTraceLocation, End, ECollisionChannel::ECC_GameTraceChannel1);
-	FVector Location = Cast<AMyRoguelikeCharacter>(GetOwner())->GetMesh()->GetSocketLocation("canon_socket");
-	FVector ThisZeroVector = HasHit ? HitResult.Location - Location : End - Location;
-	FRotator Rotation = ThisZeroVector.Rotation();
+	bool HasHit = GetWorld()->LineTraceSingleByChannel(hit, lineTraceLocation, end, ECollisionChannel::ECC_GameTraceChannel1);
+	FVector shotLocation = ownerPawn->GetMesh()->GetSocketLocation("canon_socket");
+	FVector ThisZeroVector = HasHit ? hit.Location - shotLocation : end - shotLocation;
+	FRotator shotRotation = ThisZeroVector.Rotation();
 
 	// projectile spawn
-	ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, Location, Rotation);
-	ProjectileMissile->SetOwner(Cast<AMyRoguelikeCharacter>(GetOwner()));
+	ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, shotLocation, shotRotation);
+	ProjectileMissile->SetOwner(ownerPawn);
 }

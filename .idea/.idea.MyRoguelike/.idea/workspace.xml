@@ -8,25 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee0822f-8417-40cb-8d20-4ab5ff41a887" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/NJ/XDZNQDQO22ZD8S6JEIRXTZ.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Common/Enum.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/AI/BB_EnemyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/AI/BB_EnemyAI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/AI/BP_BaseEnemyAIController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/AI/BP_BaseEnemyAIController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/AI/BT_EnemyAI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/AI/BT_EnemyAI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_LaneSuper.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_LaneSuper.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BaseEnemyCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BaseEnemyCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileGranade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileGranade.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileGranadeEnemy.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileGranadeEnemy.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileMissile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileMissile.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/CK/FJK3DWLVTU5LLWFLHHPV6Z.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/CK/FJK3DWLVTU5LLWFLHHPV6Z.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/FM/IHFHVT2S3XJ2JZ6PDJ84EJ.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/4/FM/IHFHVT2S3XJ2JZ6PDJ84EJ.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/07/M734BLQ1ZI96MLBAA6Z9C5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/07/M734BLQ1ZI96MLBAA6Z9C5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/7D/0TYMGMA30KF295BF4NFK72.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/7D/0TYMGMA30KF295BF4NFK72.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/5/07/M734BLQ1ZI96MLBAA6Z9C5.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/QJ/72QGLCUE3W82VLO8C6V80B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/QJ/72QGLCUE3W82VLO8C6V80B.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/7/K4/FBW8G2KDWMHKYK59UBL7Q8.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/7/K4/FBW8G2KDWMHKYK59UBL7Q8.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/PB/XC3DUQ7S0GVUX1DHXH1FU2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/8/PB/XC3DUQ7S0GVUX1DHXH1FU2.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/8J/IKQI7FJ72NU4XXA5F2FXBW.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/8J/IKQI7FJ72NU4XXA5F2FXBW.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/SR/P5YF3IKJFHESPEJYZF6UZI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/A/SR/P5YF3IKJFHESPEJYZF6UZI.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/D/DE/SWSI13675DVYIZ0N4NF7Y3.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/YI/9HF12ER0Q0HAMDRW5URG6P.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/YI/9HF12ER0Q0HAMDRW5URG6P.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RD.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RD.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderBlueprint.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderBlueprint.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderGameControl.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Binaries/Win64/UnrealEditor-RiderGameControl.dll" afterDir="false" />
@@ -109,29 +104,47 @@
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/RiderShaderInfo.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/RiderShaderInfo.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.exp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.exp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.lib" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/Build/Win64/UnrealEditor/Development/RiderShaderInfo/UnrealEditor-RiderShaderInfo.lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/AI/BTService_UpdatePlayerActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/AI/BTService_UpdatePlayerActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Character/BaseEnemyCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Character/BaseEnemyCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Core/MyRoguelikeGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Core/MyRoguelikeGameMode.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Logic/BaseEnemyAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Logic/BaseEnemyAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Logic/BaseEnemyAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Logic/BaseEnemyAIController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Logic/RoguelikePlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Logic/RoguelikePlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Logic/RoguelikePlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Logic/RoguelikePlayerController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileGranade.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileGranade.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileMissile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileMissile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileMissile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileMissile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerR.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerR.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilCollision.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2QzzJPMMbvNQe0oXt01VZH3kolb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -240,6 +253,12 @@
       <workItem from="1686881913851" duration="387000" />
       <workItem from="1686882393535" duration="1162000" />
       <workItem from="1686885350805" duration="12007000" />
+      <workItem from="1687138830545" duration="8000" />
+      <workItem from="1687138884529" duration="723000" />
+      <workItem from="1687139625480" duration="245000" />
+      <workItem from="1687140039520" duration="3232000" />
+      <workItem from="1687149695813" duration="3411000" />
+      <workItem from="1687154156354" duration="10325000" />
     </task>
     <servers />
   </component>
@@ -247,16 +266,12 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.cpp</url>
-          <line>2</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Source/MyRoguelike/Skill/MeleeAttack.h</url>
           <line>4</line>
@@ -271,6 +286,11 @@
           <url>file://$PROJECT_DIR$/Source/MyRoguelike/Core/MyGameInstance.cpp</url>
           <line>2</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Source/MyRoguelike/Core/MyRoguelikeGameMode.cpp</url>
+          <line>41</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

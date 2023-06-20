@@ -7,6 +7,8 @@
 
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
+#include <Components/SkeletalMeshComponent.h>
+
 
 USkillGunnerR::USkillGunnerR() : Super()
 {
@@ -22,18 +24,20 @@ void USkillGunnerR::SkillTriggered()
 {
 	Super::SkillTriggered();
 
-	FVector Location = Cast<AMyRoguelikeCharacter>(GetOwner())->GetMesh()->GetSocketLocation("Granade_socket");
-	const FRotator Rotation = GameGetPlayerController()->GetControlRotation();
-	FRotator SpawnPitch = FRotator(0, 0, 0);
-	if (60 <= Rotation.Pitch && Rotation.Pitch <= 90)
+auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	
+	FVector shotLocation = ownerPawn->GetMesh()->GetSocketLocation("Granade_socket");
+	const FRotator shotRotation = GameGetPlayerController()->GetControlRotation();
+	FRotator spawnPitch = FRotator(0, 0, 0);
+	if (60 <= shotRotation.Pitch && shotRotation.Pitch <= 90)
 	{
-		SpawnPitch.Pitch = 75;
+		spawnPitch.Pitch = 75;
 	}
 	else
 	{
-		SpawnPitch.Pitch = Rotation.Pitch + 15;
+		spawnPitch.Pitch = shotRotation.Pitch + 15;
 	}
 	// projectile spawn
-	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, Location, FRotator(SpawnPitch.Pitch, Cast<AMyRoguelikeCharacter>(GetOwner())->GetActorRotation().Yaw, 0));
-	ProjectileGranade->SetOwner(Cast<AMyRoguelikeCharacter>(GetOwner()));
+	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, Cast<AMyRoguelikeCharacter>(GetOwner())->GetActorRotation().Yaw, 0));
+	ProjectileGranade->SetOwner(ownerPawn);
 }

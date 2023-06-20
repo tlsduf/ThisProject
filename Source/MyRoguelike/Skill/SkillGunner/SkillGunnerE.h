@@ -9,7 +9,6 @@
 /**
  *
  */
-class AProjectileMissile;
 
 
 UCLASS()
@@ -28,9 +27,5 @@ public:
 	virtual void SkillTriggered() override;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileMissile> ProjectileMissileClass;
 
-	UPROPERTY()
-	AProjectileMissile *ProjectileMissile;
 };

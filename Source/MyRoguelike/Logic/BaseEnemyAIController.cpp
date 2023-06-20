@@ -5,25 +5,11 @@
 
 #include <Kismet/GameplayStatics.h>
 #include <BehaviorTree/BlackboardComponent.h>
-
+#include <Math/Vector.h>
 
 void ABaseEnemyAIController::BeginPlay()
 {
     Super::BeginPlay();
-    //밑 기능은 OnPossess로 옮김. 스폰한 액터에 컨트롤러 빙의시 크래쉬가 나기 때문임 ㄷㄷ...
-    /*
-    if (AIBehavior != nullptr)
-    {
-        RunBehaviorTree(AIBehavior);
-
-        APawn *PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-
-        GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
-
-        // SetFocus(PlayerPawn);
-        // MoveToActor(PlayerPawn, 200); //200 = radius
-        // StopMovement();
-    }*/
 }
 
 void ABaseEnemyAIController::Tick(float DeltaTime)
@@ -47,9 +33,22 @@ void ABaseEnemyAIController::OnPossess(APawn* InPawn)
     if (AIBehavior != nullptr)
     {
         RunBehaviorTree(AIBehavior);
-
-        APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-
+        
         GetBlackboardComponent()->SetValueAsVector(TEXT("SpawnLocation"), GetPawn()->GetActorLocation());
     }
+    GetWorldTimerManager().SetTimer(SpawnAnimTHandle, this, &ABaseEnemyAIController::SetTruePlaySpawnAnim, SpawnTime, false);
+}
+
+bool ABaseEnemyAIController::PlaySpawnAnim()
+{
+    if(GPlaySpawnAnim)
+    {
+        return false;
+    }
+    return true;
+}
+
+void ABaseEnemyAIController::SetTruePlaySpawnAnim()
+{
+    GPlaySpawnAnim = true;
 }

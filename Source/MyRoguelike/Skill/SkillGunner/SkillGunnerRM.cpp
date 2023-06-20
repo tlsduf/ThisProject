@@ -19,25 +19,25 @@ void USkillGunnerRM::SkillStarted()
 {
 	Super::SkillStarted();
 
-	auto Char = Cast<AMyRoguelikeCharacter>(GetOwner());
+	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	
-	Char->SetThisSpeed(400);
-	Char->MyTargetArmLength = 100.0f;
-	Char->MyTargetArmLocation = FVector(0, 50, 80);
-	Char->MyCameraLocation = FVector(0, 0, 0);
+	ownerPawn->SetThisSpeed(400);
+	ownerPawn->MyTargetArmLength = 100.0f;
+	ownerPawn->MyTargetArmLocation = FVector(0, 50, 80);
+	ownerPawn->MyCameraLocation = FVector(0, 0, 0);
 
-	Char->CanZoom = true;
+	ownerPawn->CanZoom = true;
 }
 void USkillGunnerRM::SkillCompleted()
 {
 	Super::SkillCompleted();
 	
-	auto Char = Cast<AMyRoguelikeCharacter>(GetOwner());
+	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	
-	Char->SetThisSpeed(600);
-	Char->MyTargetArmLength = 400.0f;
-	Char->MyTargetArmLocation = FVector(0, 0, 55);
-	Char->MyCameraLocation = FVector(0, 0, 55);
+	ownerPawn->SetThisSpeed(600);
+	ownerPawn->MyTargetArmLength = 400.0f;
+	ownerPawn->MyTargetArmLocation = FVector(0, 0, 55);
+	ownerPawn->MyCameraLocation = FVector(0, 0, 55);
 
-	Char->CanZoom = true;
+	ownerPawn->CanZoom = true;
 }

@@ -72,16 +72,20 @@ void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPr
 		return;
 	}
 
+	//TODO 리펙토링 해야될듯
 	Destroy();
 	if (HitActor && HitActor != this && HitActor != ownerPawn)
 	{
 		if(DoRadialDamage)
 		{
 			TArray <FHitResult> hit = UtilCollision::CapsuleSweepForward(this, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
-			for (auto It = hit.CreateIterator(); It; It++)
+			if(!hit.IsEmpty())
 			{
-				HitActor = It->GetActor();
-				UGameplayStatics::ApplyDamage(HitActor, Damage, ownerController, ownerPawn, nullptr);
+				for (auto It = hit.CreateIterator(); It; It++)
+				{
+					HitActor = It->GetActor();
+					UGameplayStatics::ApplyDamage(HitActor, Damage, ownerController, ownerPawn, nullptr);
+				}
 			}
 		}
 		else

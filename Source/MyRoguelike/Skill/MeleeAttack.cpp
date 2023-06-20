@@ -3,7 +3,6 @@
 #include "MeleeAttack.h"
 #include "../Util/UtilCollision.h"
 
-#include <GameFramework/PlayerController.h>
 #include <Kismet/GameplayStatics.h>
 
 void UMeleeAttack::BeginPlay()
@@ -17,7 +16,7 @@ void UMeleeAttack::SkillTriggered()
 
 	// 데미지 프레임워크를 위한 Instigator, Causer
 	APawn *ownerPawn = Cast<APawn>(GetOwner());
-	AController *ownerController = ownerPawn->GetInstigatorController();
+	AController *ownerController = ownerPawn->GetController();
 	if (ownerPawn == nullptr)
 	{
 		return;
@@ -27,7 +26,7 @@ void UMeleeAttack::SkillTriggered()
 	TArray<FHitResult> hit = UtilCollision::CapsuleSweepForward(ownerPawn, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
 
 	// 데미지 전달
-	if(hit.IsEmpty())
+	if(!hit.IsEmpty())
 	{
 		AActor *hitActor;
 		for (auto It = hit.CreateIterator(); It; It++)

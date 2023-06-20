@@ -280,13 +280,6 @@ void ARoguelikePlayerController::Look(const FInputActionValue &Value)
 
 void ARoguelikePlayerController::SetPlayerEnabledState(bool bPlayerEnabled)
 {
-    if (bPlayerEnabled)
-    {
-        GetPawn()->EnableInput(this);
-    }
-    else
-    {
-        GetPawn()->DisableInput(this);
-    }
+	// enhanced input 용으로 만들어야됨
     bShowMouseCursor = bPlayerEnabled;
 }

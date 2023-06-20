@@ -4,13 +4,12 @@
 #include "../Skill/PlayerSkill.h"
 
 #include <Components/InputComponent.h>
-#include <GameFramework/Controller.h>
-#include <GameFramework/PlayerController.h>
 
 #include <TimerManager.h>
-#include <DrawDebugHelpers.h>
 #include <Kismet/GameplayStatics.h>
 #include <Particles/ParticleSystemComponent.h>
+#include <Components/SkeletalMeshComponent.h>
+
 
 ABaseEnemyCharacter::ABaseEnemyCharacter()
 {
