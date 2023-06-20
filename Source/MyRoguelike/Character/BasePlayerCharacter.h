@@ -23,7 +23,10 @@ protected:
 protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override;
 
-private:
+public:
+	bool DrawERange = false;
+	FHitResult GetUnderCursorLocation();
+	APlayerController *PlayerControllerRef;
 //=================================================================================
 // 이하 기본 Prop 구성
 // bool IsRunningA 는 A의 동작시간 중인가를 판별하는 변수다.

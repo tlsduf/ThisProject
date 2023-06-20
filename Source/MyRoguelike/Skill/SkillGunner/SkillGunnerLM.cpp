@@ -1,8 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "SkillGunnerLM.h"
-#include "../SkillActor/ProjectileGranade.h"
-#include "../../MyRoguelike.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
 

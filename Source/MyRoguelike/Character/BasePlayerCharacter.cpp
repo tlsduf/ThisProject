@@ -31,8 +31,8 @@ void ABasePlayerCharacter::BeginPlay()
 /* 	BaseHitscan = GetWorld()->SpawnActor<ABaseHitscan>(BaseHitscanClass);
 	BaseHitscan->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_r"));
 	BaseHitscan->SetOwner(this);
-
-	PlayerControllerRef = Cast<APlayerController>(GetController()); */
+*/
+	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 void ABasePlayerCharacter::Tick(float DeltaTime)
@@ -103,20 +103,35 @@ void ABasePlayerCharacter::Tick(float DeltaTime)
 		FVector Granade_socketLocation = GetMesh()->GetSocketLocation("Granade_socket");
 		DrawDebugSphere(GetWorld(), Granade_socketLocation, 16, 16, FColor::Red, false, -1.f);
 	}
-
+*/
 	if (DrawERange)
 	{
 		//*스킬e 범위 디버그
 		DrawDebugSphere(GetWorld(), GetUnderCursorLocation().ImpactPoint, 32, 16, FColor::Red, false, -1.f);
 		DrawDebugSphere(GetWorld(), GetUnderCursorLocation().ImpactPoint, 500, 64, FColor::Blue, false, -1.f); // 파란 디버그구
-	} */
+	} 
+}
+
+FHitResult ABasePlayerCharacter::GetUnderCursorLocation()
+{
+	FHitResult HitResult;
+	if (PlayerControllerRef)
+	{
+		PlayerControllerRef->GetHitResultUnderCursor(
+			ECollisionChannel::ECC_Visibility,
+			false,
+			HitResult);
+		return HitResult;
+	}
+	return HitResult;
 }
 
 void ABasePlayerCharacter::SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	check(PlayerInputComponent);
-
+	
+	
 /* 	PlayerInputComponent->BindAction("LeftShift", IE_Pressed, this, &ABasePlayerCharacter::Dash);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Pressed, this, &ABasePlayerCharacter::CombatLM);
 	PlayerInputComponent->BindAction("LeftMouse", IE_Released, this, &ABasePlayerCharacter::CombatLMReleased);

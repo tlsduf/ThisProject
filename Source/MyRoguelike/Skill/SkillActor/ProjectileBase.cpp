@@ -2,12 +2,10 @@
 
 #include "ProjectileBase.h"
 #include "../../Util/UtilCollision.h"
-#include "../../Common/GameLog.h"
 
 #include <Components/CapsuleComponent.h>
 #include <Components/StaticMeshComponent.h>
 #include <GameFramework/ProjectileMovementComponent.h>
-#include <GameFramework/DamageType.h>
 #include <Kismet/GameplayStatics.h>
 #include <Particles/ParticleSystemComponent.h>
 

@@ -2,7 +2,6 @@
 
 #include "SkillGunnerR.h"
 #include "../SkillActor/ProjectileGranade.h"
-#include "../../MyRoguelike.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
 #include <GameFramework/PlayerController.h>
@@ -24,7 +23,11 @@ void USkillGunnerR::SkillTriggered()
 {
 	Super::SkillTriggered();
 
-auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	if(ownerPawn == nullptr)
+	{
+		return;
+	}
 	
 	FVector shotLocation = ownerPawn->GetMesh()->GetSocketLocation("Granade_socket");
 	const FRotator shotRotation = GameGetPlayerController()->GetControlRotation();
@@ -38,6 +41,6 @@ auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 		spawnPitch.Pitch = shotRotation.Pitch + 15;
 	}
 	// projectile spawn
-	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, Cast<AMyRoguelikeCharacter>(GetOwner())->GetActorRotation().Yaw, 0));
+	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, ownerPawn->GetActorRotation().Yaw, 0));
 	ProjectileGranade->SetOwner(ownerPawn);
 }

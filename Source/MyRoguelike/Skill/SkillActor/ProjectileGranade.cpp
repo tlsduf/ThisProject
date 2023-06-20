@@ -3,7 +3,6 @@
 #include "ProjectileGranade.h"
 
 #include <Components/CapsuleComponent.h>
-#include <GameFramework/DamageType.h>
 
 
 AProjectileGranade::AProjectileGranade()

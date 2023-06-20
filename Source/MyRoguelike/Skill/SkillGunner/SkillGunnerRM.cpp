@@ -3,8 +3,6 @@
 #include "SkillGunnerRM.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
-#include <GameFramework/PlayerController.h>
-
 USkillGunnerRM::USkillGunnerRM() : Super()
 {
 	PrimaryComponentTick.bCanEverTick = false; // 일단 Tick은 OFF 해두었습니다.
@@ -20,6 +18,10 @@ void USkillGunnerRM::SkillStarted()
 	Super::SkillStarted();
 
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	if(ownerPawn == nullptr)
+	{
+		return;
+	}
 	
 	ownerPawn->SetThisSpeed(400);
 	ownerPawn->MyTargetArmLength = 100.0f;
@@ -33,6 +35,10 @@ void USkillGunnerRM::SkillCompleted()
 	Super::SkillCompleted();
 	
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	if(ownerPawn == nullptr)
+	{
+		return;
+	}
 	
 	ownerPawn->SetThisSpeed(600);
 	ownerPawn->MyTargetArmLength = 400.0f;

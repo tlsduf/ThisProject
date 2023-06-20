@@ -3,7 +3,6 @@
 #include "ProjectileMissile.h"
 
 #include <Components/CapsuleComponent.h>
-#include <GameFramework/DamageType.h>
 
 AProjectileMissile::AProjectileMissile()
 {

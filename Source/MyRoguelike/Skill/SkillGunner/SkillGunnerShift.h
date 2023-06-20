@@ -28,5 +28,24 @@ public:
 	virtual void SkillTriggered() override;
 
 private:
+	bool IsDash = false;
+	UPROPERTY(EditAnywhere, Category = "ThisMovement")
+	float DashingTime = 0.1f;
+	bool CanDash = true;
+	bool InCooldownDash = false;
+	UPROPERTY(EditAnywhere, Category = "ThisMovement")
+	float ShiftCooldownTime = 5.f;
 
+	UPROPERTY(EditAnywhere, Category = "ThisMovement")
+	float DashDistance = 10000.f;
+
+	UPROPERTY(EditAnywhere, Category = "ThisMovement")
+	UParticleSystem *DashEffect;
+
+	FTimerHandle DashTHandle;
+
+	void StopDashing();
+	void ResetDash();
+	void ResetCooldownDash();
+	
 };

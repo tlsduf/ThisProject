@@ -2,7 +2,6 @@
 
 #include "SkillGunnerQ.h"
 #include "../SkillActor/ProjectileMissile.h"
-#include "../../MyRoguelike.h"
 #include "../../Character/MyRoguelikeCharacter.h"
 
 #include <GameFramework/PlayerController.h>
@@ -24,6 +23,10 @@ void USkillGunnerQ::SkillTriggered()
 	Super::SkillTriggered();
 
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
+	if(ownerPawn == nullptr)
+	{
+		return;
+	}
 	
 	// 라인트레이스로 최종경로설정
 	FVector lineTraceLocation;
