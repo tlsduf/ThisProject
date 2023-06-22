@@ -26,9 +26,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
-	// 루트 씬 컴포넌트
-	UPROPERTY(VisibleAnywhere)
-	USceneComponent *Root;
 	
 	// 충돌을 담당하는 캡슐
 	UPROPERTY(EditDefaultsOnly, Category = "Effect")
@@ -102,4 +99,9 @@ protected:
 
 	// OnHit의 실질적인 기능을 담고있는 함수 // OnHit이 상속이안됨.
 	virtual void _OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult);
+
+	UFUNCTION()
+	void BeginOverlapEvent(class UPrimitiveComponent* InHitComp, class AActor* InOtherActor, class UPrimitiveComponent* InOtherComp, int32 InOtherBodyIndex, bool InbFromSweep, const FHitResult & InSweepResult);
+
+	virtual void _BeginOverlapEvent(class UPrimitiveComponent* InHitComp, class AActor* InOtherActor, class UPrimitiveComponent* InOtherComp, int32 InOtherBodyIndex, bool InbFromSweep, const FHitResult & InSweepResult);
 };

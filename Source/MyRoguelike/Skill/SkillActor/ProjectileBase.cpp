@@ -15,16 +15,13 @@ AProjectileBase::AProjectileBase()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
-	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-	SetRootComponent(Root);
 	
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsuleComponent"));
 	CapsuleComponent->InitCapsuleSize(44.f, 60.f);
-	CapsuleComponent->SetupAttachment(Root);
+	SetRootComponent(CapsuleComponent);
 	
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
-	ProjectileMesh->SetupAttachment(Root);
+	ProjectileMesh->SetupAttachment(CapsuleComponent);
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
 	ProjectileMovementComponent->MaxSpeed = 1300.f;
@@ -58,7 +55,7 @@ void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPri
 	_OnHit(HitComp, HitActor, OtherComp, NormalImpulse, HitResult);
 }
 
-// 오버랩시 호출해서 데미지 적용, 투사체 파괴 등을 수행
+// 히트시 호출해서 데미지 적용, 투사체 파괴 등을 수행
 void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
 {
 	LOG_SCREEN(TEXT("OnHit"));
@@ -107,4 +104,51 @@ void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPr
 		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
 	}
 	*/
+}
+
+void AProjectileBase::BeginOverlapEvent(class UPrimitiveComponent* InHitComp, class AActor* InOtherActor, class UPrimitiveComponent* InOtherComp, int32 InOtherBodyIndex, bool InbFromSweep, const FHitResult & InSweepResult)
+{
+	_BeginOverlapEvent(InHitComp, InOtherActor, InOtherComp, InOtherBodyIndex, InbFromSweep, InSweepResult);
+}
+
+void AProjectileBase::_BeginOverlapEvent(class UPrimitiveComponent* InHitComp, class AActor* InOtherActor, class UPrimitiveComponent* InOtherComp, int32 InOtherBodyIndex, bool InbFromSweep, const FHitResult & InSweepResult)
+{
+	auto *ownerPawn = Cast<APawn>(GetOwner());
+	auto *ownerController = ownerPawn->GetController();
+	
+	//UtilEffect::ActivateDecorator( this, EDecorateUseType::Despawn);
+	
+	if (ownerPawn == nullptr)
+	{
+		Destroy();
+		return;
+	}
+
+	Destroy();
+	if (InOtherActor != nullptr && InOtherActor != ownerPawn)
+	{
+		if(DoRadialDamage)
+		{
+			TArray <FHitResult> hit = UtilCollision::CapsuleSweepForward(this, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+			for (auto It = hit.CreateIterator(); It; It++)
+			{
+				InOtherActor = It->GetActor();
+				UGameplayStatics::ApplyDamage(InOtherActor, Damage, ownerController, ownerPawn, nullptr);
+			}
+		}
+		else
+		{
+			UGameplayStatics::ApplyDamage(InOtherActor, Damage, ownerController, ownerPawn, nullptr);
+			// UGameplayStatics::ApplyPointDamage(HitActor, Damage, HitActor->GetActorLocation(), HitResult, ownerController, OwnerPawn, nullptr);
+			// UGameplayStatics::ApplyRadialDamage(GetWorld(), Damage, GetActorLocation(), RadialDamageRadius, nullptr, TArray<AActor *>(), this, ownerController, DoFullDamage, ECC_WorldStatic);
+		}
+	}
+	if (HitParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticles, GetActorLocation(), GetActorRotation());
+	}
+	if (HitSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+	}
 }

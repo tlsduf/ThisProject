@@ -25,12 +25,13 @@ void USkillGunnerR::SkillTriggered()
 
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	if(ownerPawn == nullptr)
-	{
 		return;
-	}
+	auto ownerController = ownerPawn->GetController();
+	if(ownerController == nullptr)
+		return;
 	
 	FVector shotLocation = ownerPawn->GetMesh()->GetSocketLocation("Granade_socket");
-	const FRotator shotRotation = GameGetPlayerController()->GetControlRotation();
+	const FRotator shotRotation = ownerController->GetControlRotation();
 	FRotator spawnPitch = FRotator(0, 0, 0);
 	if (60 <= shotRotation.Pitch && shotRotation.Pitch <= 90)
 	{
@@ -41,6 +42,7 @@ void USkillGunnerR::SkillTriggered()
 		spawnPitch.Pitch = shotRotation.Pitch + 15;
 	}
 	// projectile spawn
-	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, ownerPawn->GetActorRotation().Yaw, 0));
-	ProjectileGranade->SetOwner(ownerPawn);
+	FActorSpawnParameters param = FActorSpawnParameters();
+	param.Owner = GetOwner();
+	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, ownerPawn->GetActorRotation().Yaw, 0), param);
 }

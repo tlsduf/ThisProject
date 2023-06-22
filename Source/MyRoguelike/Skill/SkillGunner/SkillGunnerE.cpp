@@ -26,10 +26,10 @@ void USkillGunnerE::SkillTriggered()
 
 	auto ownerPawn = Cast<ABasePlayerCharacter>(GetOwner());
 	if(ownerPawn == nullptr)
-	{
 		return;
-	}
-	auto PlayerController = Cast<ARoguelikePlayerController>(ownerPawn->GetController());
+	APlayerController *ownerController = Cast<ARoguelikePlayerController>(ownerPawn->GetController());
+	if(ownerController == nullptr)
+		return;
 	
 	if (!IsE)
 	{
@@ -39,8 +39,8 @@ void USkillGunnerE::SkillTriggered()
 		// 마우스 화면 중앙위치 //TODO 필요에 따라 마우스 위치변경 //TODO 마우스 우클릭으로도 fire 가능하게
 		int32 ScreenWidth;
 		int32 ScreenHeight;
-		PlayerController->GetViewportSize(ScreenWidth, ScreenHeight);
-		PlayerController->SetMouseLocation(ScreenWidth * 0.5f, ScreenHeight * 0.5f);
+		ownerController->GetViewportSize(ScreenWidth, ScreenHeight);
+		ownerController->SetMouseLocation(ScreenWidth * 0.5f, ScreenHeight * 0.5f);
 
 		// 화면와이드아웃
 		ownerPawn->MyTargetArmLength = 600;
@@ -64,8 +64,9 @@ void USkillGunnerE::SkillTriggered()
 		AActor *HitActor = HitResult.GetActor();
 		if (HitActor != nullptr)
 		{
-			ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, HitResult.Location, FRotator(0,0, 0));
-			ProjectileGranade->SetOwner(ownerPawn);
+			FActorSpawnParameters param = FActorSpawnParameters();
+			param.Owner = GetOwner();
+			ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, HitResult.Location, FRotator(0,0, 0), param);
 			if (PinPointHitEffect)
 			{
 				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), PinPointHitEffect, HitResult.Location);
