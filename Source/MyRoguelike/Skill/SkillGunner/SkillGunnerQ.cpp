@@ -7,6 +7,7 @@
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
 #include <Components/SkeletalMeshComponent.h>
+#include <DrawDebugHelpers.h>
 
 USkillGunnerQ::USkillGunnerQ() : Super()
 {
@@ -47,12 +48,5 @@ void USkillGunnerQ::SkillTriggered()
 	FActorSpawnParameters param = FActorSpawnParameters();
 	param.Owner = GetOwner();
 	ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, shotLocation, shotRotation, param);
-
-	DrawDebugLine(GetWorld(), shotLocation, end, FColor::Red, 0, 3.f);
-	DrawDebugCamera(GetWorld(), lineTraceLocation, shotRotation, 90, 2, FColor::Red, 0, 3.f);
-
-	UE_LOG(LogTemp, Warning, TEXT("ThisZeroVector : %s"),*ThisZeroVector.ToString());
-	UE_LOG(LogTemp, Warning, TEXT("shotRotation : %s"),*shotRotation.ToString());
-
 	
 }

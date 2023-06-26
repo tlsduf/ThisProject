@@ -41,12 +41,12 @@ public:
 	void DoMeleeAttack();
 
 	void SetCanMeleeAttackTrue();
-	void SetInMeleeAttackFalse();
+	void SetDoingMeleeAttackFalse();
 
 	void DoProjectileAttack();
 
 	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool InMeleeAttack = false;
+	bool DoingMeleeAttack = false;
 
 	bool CanMeleeAttack = true;
 	FTimerHandle MeleeAttackTHandle;

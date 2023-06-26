@@ -58,7 +58,6 @@ void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPri
 // 히트시 호출해서 데미지 적용, 투사체 파괴 등을 수행
 void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &HitResult)
 {
-	LOG_SCREEN(TEXT("OnHit"));
 	APawn *ownerPawn = Cast<APawn>(GetOwner());
 	AController *ownerController = ownerPawn->GetController();
 	if (ownerPawn == nullptr)

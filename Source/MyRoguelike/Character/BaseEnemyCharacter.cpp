@@ -43,8 +43,8 @@ void ABaseEnemyCharacter::MeleeAttackHandle()
 		GetWorldTimerManager().SetTimer(MeleeAttackTHandle, this, &ABaseEnemyCharacter::DoMeleeAttack, 0.50f, false);
 		CanMeleeAttack = false;
 		GetWorldTimerManager().SetTimer(CanMeleeAttackTHandle, this, &ABaseEnemyCharacter::SetCanMeleeAttackTrue, 1.10f, false);
-		InMeleeAttack = true;
-		GetWorldTimerManager().SetTimerForNextTick(this, &ABaseEnemyCharacter::SetInMeleeAttackFalse);
+		DoingMeleeAttack = true;
+		GetWorldTimerManager().SetTimerForNextTick(this, &ABaseEnemyCharacter::SetDoingMeleeAttackFalse);
 	}
 }
 void ABaseEnemyCharacter::DoMeleeAttack()
@@ -56,9 +56,9 @@ void ABaseEnemyCharacter::SetCanMeleeAttackTrue()
 {
 	CanMeleeAttack = true;
 }
-void ABaseEnemyCharacter::SetInMeleeAttackFalse()
+void ABaseEnemyCharacter::SetDoingMeleeAttackFalse()
 {
-	InMeleeAttack = false;
+	DoingMeleeAttack = false;
 }
 
 void ABaseEnemyCharacter::DoProjectileAttack()
