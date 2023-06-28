@@ -10,9 +10,7 @@
   "DocsURL": "",
   "MarketplaceURL": "",
   "SupportURL": "",
-  "EnabledByDefault": true,
   "CanContainContent": false,
-  "IsBetaVersion": false,
   "Installed": false,
   "Modules": [
     {
@@ -49,12 +47,10 @@
       "Name": "RiderLC",
       "Type": "EditorNoCommandlet",
       "LoadingPhase": "PostEngineInit",
-      "WhitelistPlatforms": [
-        "Win64"
-      ],
       "PlatformAllowList": [
         "Win64"
       ]
     }
-  ]
+  ],
+  "EnabledByDefault": true
 }

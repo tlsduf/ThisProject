@@ -23,13 +23,16 @@ void UMeleeAttack::SkillTriggered()
 	}
 
 	// 충돌 검사
-	TArray<FHitResult> hit = UtilCollision::CapsuleSweepForward(ownerPawn, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
+	TArray<FHitResult> sweepResults;
+	FVector startLocation = ownerPawn->GetActorLocation() + ownerPawn->GetActorForwardVector() * AttackStartPoint;
+	FVector endLocation = startLocation + ownerPawn->GetActorForwardVector() * AttackRange;
+	UtilCollision::CapsuleSweepMulti(sweepResults, startLocation, endLocation, AttackRadius, DebugOnOff);
 
 	// 데미지 전달
-	if(!hit.IsEmpty())
+	if(!sweepResults.IsEmpty())
 	{
 		AActor *hitActor;
-		for (auto It = hit.CreateIterator(); It; It++)
+		for (auto It = sweepResults.CreateIterator(); It; It++)
 		{
 			hitActor = It->GetActor();
 			UGameplayStatics::ApplyDamage(hitActor, Damage, ownerController, ownerPawn, nullptr);

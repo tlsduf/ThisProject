@@ -72,10 +72,13 @@ void AProjectileBase::_OnHit(UPrimitiveComponent *HitComp, AActor *HitActor, UPr
 	{
 		if(DoRadialDamage)
 		{
-			TArray <FHitResult> hit = UtilCollision::CapsuleSweepForward(this, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
-			if(!hit.IsEmpty())
+			TArray<FHitResult> sweepResults;
+			FVector startLocation = GetActorLocation() + GetActorForwardVector() * AttackStartPoint;
+			FVector endLocation = startLocation + GetActorForwardVector() * AttackRange;
+			UtilCollision::CapsuleSweepMulti(sweepResults, startLocation, endLocation, AttackRadius, DebugOnOff);
+			if(!sweepResults.IsEmpty())
 			{
-				for (auto It = hit.CreateIterator(); It; It++)
+				for (auto It = sweepResults.CreateIterator(); It; It++)
 				{
 					HitActor = It->GetActor();
 					UGameplayStatics::ApplyDamage(HitActor, Damage, ownerController, ownerPawn, nullptr);
@@ -128,8 +131,11 @@ void AProjectileBase::_BeginOverlapEvent(class UPrimitiveComponent* InHitComp, c
 	{
 		if(DoRadialDamage)
 		{
-			TArray <FHitResult> hit = UtilCollision::CapsuleSweepForward(this, AttackRadius, AttackStartPoint, AttackRange, DebugOnOff);
-			for (auto It = hit.CreateIterator(); It; It++)
+			TArray<FHitResult> sweepResults;
+			FVector startLocation = GetActorLocation() + GetActorForwardVector() * AttackStartPoint;
+			FVector endLocation = startLocation + GetActorForwardVector() * AttackRange;
+			UtilCollision::CapsuleSweepMulti(sweepResults, startLocation, endLocation, AttackRadius, DebugOnOff);
+			for (auto It = sweepResults.CreateIterator(); It; It++)
 			{
 				InOtherActor = It->GetActor();
 				UGameplayStatics::ApplyDamage(InOtherActor, Damage, ownerController, ownerPawn, nullptr);

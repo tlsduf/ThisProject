@@ -7,7 +7,6 @@
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
 #include <Components/SkeletalMeshComponent.h>
-#include <DrawDebugHelpers.h>
 
 USkillGunnerQ::USkillGunnerQ() : Super()
 {

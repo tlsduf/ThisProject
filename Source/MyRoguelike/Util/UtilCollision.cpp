@@ -9,105 +9,46 @@
 
 
 // =============================================================
-// 전방으로 캡슐스윕을 해 히트정보를 받아온다 SweepSingleByChannel
-// warning OwnerPawn 이 nullptr일 경우 예외처리를 해야되는데 어캐함
+/**
+	 *시작점->끝점까지 구로 스윕 트레이스를 합니다.
+	 * @param OutHitResults : Sweep 결과 를 담아주는 배열입니다.
+	 * @param InStartLocation : 트레이스의 시작점입니다. (시작 구의 정 가운데)
+	 * @param InEndLocation : 트레이스의 끝점 입니다. (끝 구의 정 가운데)
+	 * @param InCapsuleRadius : Sweep할 구의 반지름입니다.
+	 * @param InDebugOnOff : 디버그캡슐의 Draw를 결정하는 bool변수입니다.
+	 */
 // =============================================================
-TArray<FHitResult> UtilCollision::CapsuleSweepForward(APawn *OwnerPawn, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
+bool UtilCollision::CapsuleSweepMulti(TArray<FHitResult>& OutHitResults, const FVector& InStartLocation, const FVector& InEndLocation, const float& InCapsuleRadius, bool InDebugOnOff)
 {
-	TArray<FHitResult> hit;
-	if (OwnerPawn == nullptr)
-	{
-		return hit;
-	}
-	
-	FCollisionQueryParams params;
-	params.AddIgnoredActor(OwnerPawn);
-
-	bool hasHit = GameGetWorld()->SweepMultiByChannel(
-		hit,
-		OwnerPawn->GetActorLocation() + OwnerPawn->GetActorForwardVector() * InAttackStartPoint,
-		OwnerPawn->GetActorLocation() + OwnerPawn->GetActorForwardVector() * InAttackStartPoint + OwnerPawn->GetActorForwardVector() * InAttackRange,
-		FQuat::Identity,
-		ECollisionChannel::ECC_GameTraceChannel6,
-		FCollisionShape::MakeSphere(InAttackRadius),
-		params);
-
-	AActor *hitActor = nullptr;
-	if(!hit.IsEmpty())
-	{
-		auto It = hit.CreateIterator();
-		hitActor = It->GetActor();
-	}
-
 	// 디버그 캡슐을 그린다. Red - hit 실패/ Green - hit 성공
 	if (InDebugOnOff)
 	{
-		FVector traceVec = OwnerPawn->GetActorForwardVector() * InAttackRange;
-		FVector center = OwnerPawn->GetActorLocation() + OwnerPawn->GetActorForwardVector() * InAttackStartPoint + traceVec * 0.5f;
-		float halfHeight = InAttackRange * 0.5f + InAttackRadius;
+		FVector traceVec = InEndLocation - InStartLocation;
+		FVector center = traceVec * 0.5f;
+		float halfHeight = traceVec.Size() * 0.5f + InCapsuleRadius;
 		FQuat capsuleRot = FRotationMatrix::MakeFromZ(traceVec).ToQuat();
-		FColor drawColor = (hitActor != nullptr && hitActor != OwnerPawn) ? FColor::Green : FColor::Red;
+		FColor drawColor = FColor::Red;
 		float debugLifeTime = 5.0f;
 
 		DrawDebugCapsule(GameGetWorld(),
 						 center,
 						 halfHeight,
-						 InAttackRadius,
+						 InCapsuleRadius,
 						 capsuleRot,
 						 drawColor,
 						 false,
 						 debugLifeTime);
 	}
-
-	return hit;
-}
-TArray<FHitResult> UtilCollision::CapsuleSweepForward(AActor *OwnerActor, float InAttackRadius, float InAttackStartPoint, float InAttackRange, bool InDebugOnOff)
-{
-	TArray<FHitResult> hit;
-	if (OwnerActor == nullptr)
-	{
-		return hit;
-	}
-	
 	FCollisionQueryParams params;
-	params.AddIgnoredActor(OwnerActor);
-
-	bool hasHit = GameGetWorld()->SweepMultiByChannel(
-		hit,
-		OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint,
-		OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint + OwnerActor->GetActorForwardVector() * InAttackRange,
+	
+	return GameGetWorld()->SweepMultiByChannel(
+		OutHitResults,
+		InStartLocation,
+		InEndLocation,
 		FQuat::Identity,
 		ECollisionChannel::ECC_GameTraceChannel6,
-		FCollisionShape::MakeSphere(InAttackRadius),
+		FCollisionShape::MakeSphere(InCapsuleRadius),
 		params);
-
-	AActor *hitActor = nullptr;
-	if(!hit.IsEmpty())
-	{
-		auto It = hit.CreateIterator();
-		hitActor = It->GetActor();
-	}
-
-	// 디버그 캡슐을 그린다. Red - hit 실패/ Green - hit 성공
-	if (InDebugOnOff)
-	{
-		FVector traceVec = OwnerActor->GetActorForwardVector() * InAttackRange;
-		FVector center = OwnerActor->GetActorLocation() + OwnerActor->GetActorForwardVector() * InAttackStartPoint + traceVec * 0.5f;
-		float halfHeight = InAttackRange * 0.5f + InAttackRadius;
-		FQuat capsuleRot = FRotationMatrix::MakeFromZ(traceVec).ToQuat();
-		FColor drawColor = (hitActor != nullptr) ? FColor::Green : FColor::Red;
-		float debugLifeTime = 5.0f;
-
-		DrawDebugCapsule(GameGetWorld(),
-						 center,
-						 halfHeight,
-						 InAttackRadius,
-						 capsuleRot,
-						 drawColor,
-						 false,
-						 debugLifeTime);
-	}
-	return hit;
 }
 
 
