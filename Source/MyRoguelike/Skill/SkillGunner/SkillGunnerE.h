@@ -10,42 +10,26 @@
  *
  */
 
-class AProjectileGranade;
 
 UCLASS()
 class MYROGUELIKE_API USkillGunnerE : public UPlayerSkill
 {
 	GENERATED_BODY()
 
+	FTimerHandle ZoomTHandle;
 public:
 	// 생성자
 	USkillGunnerE();
 
 protected:
 	virtual void BeginPlay() override;
-
+	//줌인
+	void ZoomIn();
+	//줌아웃
+	void ZoomOut();
 public:
 	virtual void SkillTriggered() override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	float EDamage = 50;
-	
-	bool IsE = false;
-	bool CanE = true;
-	bool InCooldownE = false;
-	
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	float ECooldownTime = 5.f;
 
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	UParticleSystem *PinPointHitEffect;
-
-	FHitResult GetUnderCursorLocation();
-
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileGranade> ProjectileGranadeClass;
-
-	UPROPERTY()
-	AProjectileGranade *ProjectileGranade;
 };

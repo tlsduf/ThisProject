@@ -23,7 +23,11 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
+	//줌인
+	void ZoomIn();
+	//줌아웃
+	void ZoomOut();
+	
 public:
 	virtual void SkillStarted() override;
 	virtual void SkillCompleted() override;

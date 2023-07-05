@@ -208,26 +208,5 @@ public:
 	// * 공격관련 변수
 	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "CombatProp")
 	float FireRate = 0.25f;
-
-protected:
-	// * 키bool Anim블루프린트 몽타주 실행용 // 블루프린트에서만 사용하고있다.
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsQPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsEPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsRPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsZPressed = false;
-
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsLMPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsRMPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsLShiftPressed = false;
-	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
-	bool IsSpacePressed = false;
-
 	// !------------------------------------------------------------
 };

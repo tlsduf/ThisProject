@@ -3,13 +3,12 @@
 #include "SkillGunnerLM.h"
 #include "../SkillActor/ProjectileMissile.h"
 #include "../../Character/MyRoguelikeCharacter.h"
-#include "../../Util/UtilEffect.h"
+#include "../../Animation/GunnerAnimInstance.h"
 
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
 #include <Components/SkeletalMeshComponent.h>
-#include <Kismet/GameplayStatics.h>
-#include "NiagaraFunctionLibrary.h"
+
 
 USkillGunnerLM::USkillGunnerLM() : Super()
 {
@@ -31,30 +30,32 @@ void USkillGunnerLM::SkillTriggered()
 	auto ownerController = ownerPawn->GetController();
 	if(ownerController == nullptr)
 		return;
-
-	if (ThisShotParticle)
-	{
-		UNiagaraFunctionLibrary::SpawnSystemAttached( ThisShotParticle, GetOwner()->GetRootComponent(), "canon_socket", FVector(0,0,0), FRotator(0,0,0), EAttachLocation::KeepRelativeOffset, true );
-	}
-	if (ThisShotParticleParticles)
-	{
-		//UGameplayStatics::SpawnEmitterAttached(ThisShotParticleParticles, GetOwner()->GetRootComponent(), "canon_socket", FVector Location, FRotator Rotation, FVector Scale, EAttachLocation::Type LocationType, bool bAutoDestroy, EPSCPoolMethod PoolingMethod, bool bAutoActivateSystem);
-	}
 	
 	// 라인트레이스로 최종경로설정
 	FVector lineTraceLocation;
 	FRotator lineTraceRotation;
 	ownerController->GetPlayerViewPoint(lineTraceLocation, lineTraceRotation);
-	
 	FVector end = lineTraceLocation + lineTraceRotation.Vector() * 10000;
 	FHitResult hit;
+	bool Hit = GetWorld()->LineTraceSingleByChannel(hit, lineTraceLocation, end, ECollisionChannel::ECC_GameTraceChannel1);
 
-	bool HasHit = GetWorld()->LineTraceSingleByChannel(hit, lineTraceLocation, end, ECollisionChannel::ECC_GameTraceChannel1);
-	FVector shotLocation = ownerPawn->GetMesh()->GetSocketLocation("canon_socket");
-	FVector ThisZeroVector = HasHit ? hit.Location - shotLocation : end - shotLocation;
-	FRotator shotRotation = ThisZeroVector.Rotation();
+	// 왼손 오른손 반복
+	FVector shotLocationHandL =ownerPawn->GetMesh()->GetSocketLocation("hand_lShotSocket");
+	FVector shotLocationHandR =ownerPawn->GetMesh()->GetSocketLocation("hand_rShotSocket");
+	ToggleVar = !ToggleVar;	// 호출마다 왼손 오른손 반복토글
+	FVector shotLocation = ToggleVar ? shotLocationHandL : shotLocationHandR;
+	FRotator shotRotation = (Hit ? hit.Location - shotLocation : end - shotLocation).Rotation();
 
-	// projectile spawn
+	//===========================================
+	// * MainAction 1 // 반동 애니메이션
+	UGunnerAnimInstance* animInst = Cast<UGunnerAnimInstance>(ownerPawn->GetMesh()->GetAnimInstance());
+	if (!animInst)
+		return;
+	
+	ToggleVar ? animInst->RotateHandL() : animInst->RotateHandR();
+
+	//===========================================
+	// * MainAction 2 // Projectile Spawn
 	FActorSpawnParameters param = FActorSpawnParameters();
 	param.Owner = GetOwner();
 	ProjectileMissile = GetWorld()->SpawnActor<AProjectileMissile>(ProjectileMissileClass, shotLocation, shotRotation, param);

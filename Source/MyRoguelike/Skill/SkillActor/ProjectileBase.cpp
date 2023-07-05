@@ -33,9 +33,14 @@ void AProjectileBase::BeginPlay()
 {
 	Super::BeginPlay();
 
+	APawn *ownerPawn = Cast<APawn>(GetOwner());
 	if (ShotParticles)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ShotParticles, GetActorLocation(), GetActorRotation());
+	}
+	if(ShotAttachParticles)
+	{
+		UGameplayStatics::SpawnEmitterAttached(ShotAttachParticles, GetRootComponent(), "null", FVector(0), FRotator::ZeroRotator, FVector(1), EAttachLocation::KeepRelativeOffset, true);
 	}
 	if (ShotSound)
 	{

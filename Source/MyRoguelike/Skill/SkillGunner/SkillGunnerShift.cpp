@@ -2,9 +2,11 @@
 
 #include "SkillGunnerShift.h"
 #include "../../Character/MyRoguelikeCharacter.h"
+#include "../../Animation/GunnerAnimInstance.h"
 
 #include <GameFramework/Character.h>
 #include <GameFramework/CharacterMovementComponent.h>
+#include <Components/SkeletalMeshComponent.h>
 
 USkillGunnerShift::USkillGunnerShift() : Super()
 {
@@ -22,9 +24,7 @@ void USkillGunnerShift::SkillTriggered()
 
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	if(ownerPawn == nullptr)
-	{
 		return;
-	}
 
 	const FVector currentAcceleration = ownerPawn->GetCharacterMovement()->GetCurrentAcceleration();
 	float currentAccelLength = currentAcceleration.SizeSquared();
@@ -51,6 +51,13 @@ void USkillGunnerShift::SkillTriggered()
 		ownerPawn->SetZoomOutProp();
 
 		ownerPawn->GetWorldTimerManager().SetTimer(DashTHandle, this, &USkillGunnerShift::StopDashing, DashingTime, false);
+
+		//애니메이션 재생?
+		UGunnerAnimInstance* animInst = Cast<UGunnerAnimInstance>(ownerPawn->GetMesh()->GetAnimInstance());
+		if (!animInst)
+			return;
+
+		animInst->PlayMontage(EAbilityType::Shift, EAroundSkillMontageType::AroundAttack1);
 	}
 }
 void USkillGunnerShift::StopDashing()

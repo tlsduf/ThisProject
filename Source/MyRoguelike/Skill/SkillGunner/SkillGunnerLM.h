@@ -17,6 +17,15 @@ class MYROGUELIKE_API USkillGunnerLM : public UPlayerSkill
 {
 	GENERATED_BODY()
 
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
+	TSubclassOf<AProjectileMissile> ProjectileMissileClass;
+
+	UPROPERTY()
+	AProjectileMissile *ProjectileMissile;
+
+	bool ToggleVar = true;
+	
 public:
 	// 생성자
 	USkillGunnerLM();
@@ -27,16 +36,4 @@ protected:
 public:
 	virtual void SkillTriggered() override;
 
-private:
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	UNiagaraSystem *ThisShotParticle;
-
-	UPROPERTY(EditAnywhere, Category = "MyCustomCategory")
-	UParticleSystem *ThisShotParticleParticles;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
-	TSubclassOf<AProjectileMissile> ProjectileMissileClass;
-
-	UPROPERTY()
-	AProjectileMissile *ProjectileMissile;
 };

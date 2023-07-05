@@ -4,6 +4,7 @@
 #include "../Core/MyRoguelikeGameMode.h"
 #include "../Skill/PlayerSkill.h"
 #include "../Common/GameLog.h"
+#include "../Util/UtilEnum.h"
 
 #include <Camera/CameraComponent.h>
 #include <Components/CapsuleComponent.h>
@@ -11,7 +12,6 @@
 #include <GameFramework/CharacterMovementComponent.h>
 
 #include <GameFramework/Controller.h>
-#include <GameFramework/PlayerController.h>
 
 #include <TimerManager.h>
 #include <DrawDebugHelpers.h>
@@ -136,10 +136,6 @@ void AMyRoguelikeCharacter::Move(const FInputActionValue &Value)
 		// add movement
 		AddMovementInput(ForwardDirection, MovementVector.Y);
 		AddMovementInput(RightDirection, MovementVector.X);
-		if (InCombat)
-		{
-			SetActorRotation(YawRotation);
-		}
 	}
 }
 void AMyRoguelikeCharacter::Look(const FInputActionValue &Value)
@@ -284,16 +280,18 @@ void AMyRoguelikeCharacter::ZoomInOut(float DeltaTime)
 //================================================================
 void AMyRoguelikeCharacter::RotatePawn(float DeltaTime)
 {
-	const FRotator Rotation = Controller->GetControlRotation();
-	const FRotator YawRotation(0, Rotation.Yaw, 0);
+	FRotator rotation = GetActorRotation();
+	FRotator toRotation = Controller->GetControlRotation();
+	
+	FRotator yawRotation(0, toRotation.Yaw, 0);
 
-	SetActorRotation(YawRotation);
+	//SetActorRotation(yawRotation);
 
-	//SetActorRotation(FMath::RInterpTo(
-	//	GetActorRotation(),
-	//	YawRotation,
-	//	DeltaTime,
-	//	10));
+	SetActorRotation(FMath::RInterpTo(
+		rotation,
+		yawRotation,
+		DeltaTime,
+		20));
 }
 
 // Base Movement

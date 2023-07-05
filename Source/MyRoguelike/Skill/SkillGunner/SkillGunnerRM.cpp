@@ -17,6 +17,17 @@ void USkillGunnerRM::SkillStarted()
 {
 	Super::SkillStarted();
 
+	ZoomIn();
+}
+void USkillGunnerRM::SkillCompleted()
+{
+	Super::SkillCompleted();
+
+	ZoomOut();
+}
+
+void USkillGunnerRM::ZoomIn()
+{
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	if(ownerPawn == nullptr)
 	{
@@ -30,10 +41,9 @@ void USkillGunnerRM::SkillStarted()
 
 	ownerPawn->CanZoom = true;
 }
-void USkillGunnerRM::SkillCompleted()
+
+void USkillGunnerRM::ZoomOut()
 {
-	Super::SkillCompleted();
-	
 	auto ownerPawn = Cast<AMyRoguelikeCharacter>(GetOwner());
 	if(ownerPawn == nullptr)
 	{

@@ -12,6 +12,7 @@
 #include <Engine/Engine.h>
 #include <Engine/GameInstance.h>
 #include <UObject/ObjectMacros.h>
+#include <UObject/ConstructorHelpers.h>
 #include <Misc/Build.h>
 #include <Templates/SubclassOf.h>
 #include <Templates/Function.h>
@@ -30,10 +31,15 @@
 //		Include-What-You-Use (IWYU) 를 지키는지 꼭 확인
 //		컴파일 시간에 직접적인 영향을 줍니다
 // =============================================================
-#include "Common/GameLog.h"
+//#include "Common/Const.h"
+//#include "Common/Define.h"
 #include "Common/Enum.h"
-
-
+//#include "Common/Typedef.h"
+#include "Common/GameLog.h"
+//#include "Common/RTTI.h"
+//#include "DataAsset/GwDataAssetHelper.h"
+#include "Util/Animator.h"
+#include "Util/UtilFunctor.h"
 
 // 월드를 반환한다.
 UWorld* GameGetWorld( UObject* InObject = nullptr );

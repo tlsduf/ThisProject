@@ -3,6 +3,7 @@
 #include "SkillGunnerR.h"
 #include "../SkillActor/ProjectileGranade.h"
 #include "../../Character/MyRoguelikeCharacter.h"
+#include "../../Animation/GunnerAnimInstance.h"
 
 #include <GameFramework/PlayerController.h>
 #include <GameFramework/Character.h>
@@ -45,4 +46,12 @@ void USkillGunnerR::SkillTriggered()
 	FActorSpawnParameters param = FActorSpawnParameters();
 	param.Owner = GetOwner();
 	ProjectileGranade = GetWorld()->SpawnActor<AProjectileGranade>(ProjectileGranadeClass, shotLocation, FRotator(spawnPitch.Pitch, ownerPawn->GetActorRotation().Yaw, 0), param);
+
+
+	//애니메이션 재생?
+	UGunnerAnimInstance* animInst = Cast<UGunnerAnimInstance>(ownerPawn->GetMesh()->GetAnimInstance());
+	if (!animInst)
+		return;
+
+	animInst->PlayMontage(EAbilityType::SkillR, EAroundSkillMontageType::AroundAttack1);
 }

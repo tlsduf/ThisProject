@@ -49,14 +49,6 @@ enum class EObjectType : uint8
 	Monster		UMETA( ToolTip = "Monster" ),
 };
 
-// 입력 방식 타입에 대한 enum 입니다. 
-UENUM( BlueprintType )
-enum class EInputType : uint8
-{
-	MouseBase		UMETA( ToolTip = "마우스 기반 이동"),
-	KeyboardBase 	UMETA( ToolTip = "키보드 기반 이동")
-};
-
 // 능력이 완료 되었을때, 어떻게 완료되었는지에 대한 enum 입니다.
 UENUM( BlueprintType )
 enum class EAbilityCompletedType : uint8
@@ -84,22 +76,38 @@ enum class EPCStateType : uint8
 UENUM(BlueprintType)
 enum class EAbilityType : uint8
 {
-	BasicAttack			UMETA( ToolTip = "기본 공격"),
-	Skill1				UMETA( ToolTip = "1번째 스킬"),
-	Skill2 				UMETA( ToolTip = "2번째 스킬"),
-	Skill3				UMETA( ToolTip = "3번째 스킬"),
-	Skill4 				UMETA( ToolTip = "4번째 스킬"),
-	UltimateSkill		UMETA( ToolTip = "궁극기 스킬"),
-	AvoidSkill			UMETA( ToolTip = "회피 스킬"),
+	MouseLM				UMETA( ToolTip = "마우스 좌클릭"),
+	MouseRM				UMETA( ToolTip = "마우스 우클릭"),
+	Shift				UMETA( ToolTip = "쉬프트"),
+	SkillQ				UMETA( ToolTip = "Q 스킬"),
+	SkillE 				UMETA( ToolTip = "E 스킬"),
+	SkillR				UMETA( ToolTip = "R 스킬"),
 	None				UMETA( ToolTip = "지정되지 않음"),
 };
 ENUM_RANGE_BY_COUNT( EAbilityType, EAbilityType::None );
 
+//콜리전 타입에 대한 enum 입니다.
+UENUM(BlueprintType)
+enum class EActorCollisionShape : uint8
+{
+	Box			UMETA(ToolTip = "육면체 형태"),
+	Sphere		UMETA(ToolTip = "구 형태"),
+	Capsule		UMETA(ToolTip = "캡슐 형태")
+};
+
+//Buff의 타입을 설정합니다.
 UENUM(BlueprintType)
 enum class EBuffType : uint8
 {
-	Stat	UMETA(ToolTip = "스탯변화 버프"),
-	None
+	Stat	UMETA(ToolTip = "스탯변화 버프")
+};
+
+//
+UENUM(BlueprintType)
+enum class EBuffSelectRule : uint8
+{
+	Range		UMETA(ToolTip = "범위 내의 대상에게 버프를 적용합니다.")
+	//Nearest		UMETA(ToolTip = "가장 가까운 대상에게 버프를 적용합니다.")
 };
 
 //BuffBase에서 이펙트를 생성할 시기를 정해줍니다.
@@ -112,17 +120,17 @@ enum class EEffectCreationTime : uint8
 };
 
 // 표면 재질 타입
-/*UENUM( BlueprintType )
+UENUM( BlueprintType )
 enum class EPhysicalSurfaceType : uint8
 {
 	Default	UMETA( ToolTip = "기본값" ),
 	Dirt	UMETA( ToolTip = "흙" ),
 	Grass	UMETA( ToolTip = "잔디" ),
 	Rock	UMETA( ToolTip = "암석" ),
-};*/
+};
 
 // 캐릭터 태그에 대한 enum 입니다.
-/*UENUM( BlueprintType )
+UENUM( BlueprintType )
 enum class ETagType : uint8
 {
 	TagCharacter1,
@@ -130,7 +138,7 @@ enum class ETagType : uint8
 	TagCharacter3,
 	Max
 };
-ENUM_RANGE_BY_COUNT( ETagType, ETagType::Max );*/
+ENUM_RANGE_BY_COUNT( ETagType, ETagType::Max );
 
 //AnimationMontage를 재생시킬 타입입니다.
 UENUM(BlueprintType)
@@ -154,5 +162,21 @@ enum class EDecorateUseType : uint8
 {
 	Spawn		UMETA( ToolTip = "스폰되는 시점에 발동" ),
 	Despawn		UMETA( ToolTip = "디스폰되는 시점에 발동" ),
+	Max,
+};
+
+// AnimMontage의 섹션 타입
+// TODO : 회의때 어떻게 사용할건지 알려야함.
+UENUM( BlueprintType )
+enum class EMontageSectionType : uint8
+{
+	None				UMETA( ToolTip = "지정되지 않음"), 
+	BasicAttack			UMETA( ToolTip = "기본 공격"),
+	Skill1				UMETA( ToolTip = "1번째 스킬"),
+	Skill2 				UMETA( ToolTip = "2번째 스킬"),
+	Skill3				UMETA( ToolTip = "3번째 스킬"),
+	Skill4 				UMETA( ToolTip = "4번째 스킬"),
+	UltimateSkill		UMETA( ToolTip = "궁극기 스킬"),
+	AvoidSkill			UMETA( ToolTip = "회피 스킬"),
 	Max,
 };

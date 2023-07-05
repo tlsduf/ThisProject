@@ -16,20 +16,27 @@ class MYROGUELIKE_API USkillGunnerQ : public UPlayerSkill
 {
 	GENERATED_BODY()
 
-public:
-	// 생성자
-	USkillGunnerQ();
-
-protected:
-	virtual void BeginPlay() override;
-
-public:
-	virtual void SkillTriggered() override;
-
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "MyCustomCategory")
 	TSubclassOf<AProjectileMissile> ProjectileMissileClass;
 
 	UPROPERTY()
 	AProjectileMissile *ProjectileMissile;
+
+	FTimerHandle ZoomTHandle;
+public:
+	// 생성자
+	USkillGunnerQ();
+
+protected:
+	virtual void BeginPlay() override;
+	//줌인
+	void ZoomIn();
+	//줌아웃
+	void ZoomOut();
+	
+public:
+	virtual void SkillTriggered() override;
+
+
 };
