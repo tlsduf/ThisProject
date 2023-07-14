@@ -3,6 +3,7 @@
 #include "MyGameInstance.h"
 
 #include <Modules/ModuleManager.h>
+#include <PropertyEditorModule.h>
 
 UMyGameInstance::UMyGameInstance()
 {
@@ -24,7 +25,7 @@ UMyGameInstance::UMyGameInstance()
     Section2->AddCategory("skill E");
     Section2->AddCategory("skill R");
 
-    // 아래 카테고리들은 대충 뭉뚱그려서 관리 할 카테고리들임 (따로 관리하기에는 너무 종류가 많고 이름도 다 다름)
+    // 아래 카테고리들은 대충 뭉뚱그려서 관리 할 카테고리들입니다. (따로 관리하기에는 너무 종류가 많고 이름도 다 다름)
     // - 몬스터
     TSharedRef<FPropertySection> SectionA1 = PropertyModule.FindOrCreateSection("BaseEnemyCharacter", "CustomSection", LOCTEXT("CustomSection", "CustomSection"));
     SectionA1->AddCategory("MyCustomCategory");

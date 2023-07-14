@@ -8,65 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aee0822f-8417-40cb-8d20-4ab5ff41a887" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/Ability_R_RootMotion/Driving_Ability_R_RootMotion.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/Gun_left_jump_shoot_rolling.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/GunnerMontageAround.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/GunnerMontageFocusShot.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/TwoGun_AroundAttack_Combo_5.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/TwoGun_AroundAttack_Combo_6.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/TwoGun_AroundAttack_Combo_7.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/TwoGun_AroundAttack_Combo_8.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/TwoGun_AroundAttack_Combo_9.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Animation/MonsterAnimInstace.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Animation/MonsterAnimInstace.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/TestSkill/TSUnderCursor.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/TestSkill/TSUnderCursor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/Animator.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/Animator.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/AnimatorFunctionImpl.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/AnimatorFunctionImpl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilEnum.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilEnum.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/MyRoguelike/Util/UtilFunctor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MyRoguelike/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/Ability_R_RootMotion.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/Ability_R_RootMotion.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/Locomotion_Combat/AO/Idle_AO_Combat.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/Locomotion_Combat/AO/Idle_AO_Combat.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/AssetPacks/ParagonWraith/FX/Particles/Abilities/ScopedShot/FX/P_Wraith_Sniper_MuzzleFlash_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/AimoffSet/Gun_LookAround.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/AimoffSet/Gun_LookAround.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/AimoffSet/TwoGun_Aim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/AimoffSet/TwoGun_Aim.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/BlendSpace/Gun_combat_Walk_Run_BS.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/BlendSpace/Gun_combat_Walk_Run_BS.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/BlendSpace/Gun_combat_Walk_Run_BS_2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/AdvancedAsset/BlendSpace/Gun_combat_Walk_Run_BS_2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/Montage_Gunner.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/CustomAnimation/Montage_Gunner_2.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Gun_front_dash.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Gun_front_dash.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Skeleton/UE4_Mannequin_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/Skeleton/UE4_Mannequin_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/TwoGun_combat__Strafe_Run_Front.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/TwoGun_combat__Strafe_Run_Front.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/InsaneGunner/Animation/TwoGun_combat__Strafe_Run_FrontLeft.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/InsaneGunner/Animation/TwoGun_combat__Strafe_Run_FrontLeft.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/ABP_Gunner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/Wraith_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Animation/ABP/Wraith_AnimBlueprint.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/BP_RoguelikeGameMode.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Character_BP/BP_BasePlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_SkillGunnerLM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_SkillGunnerLM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_SkillGunnerQ.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/BP_SkillGunnerQ.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/Gun.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/Gun.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileMissile.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/MyCharacter/Skill_BP/SkillActor_BP/BP_ProjectileMissile.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/JA/PS50UR8RWVVEWWTZP34EOX.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Character/MyRoguelikeCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Common/Enum.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Common/Enum.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/MyRoguelike.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillActor/ProjectileBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerE.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerLM.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerQ.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerR.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerR.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerRM.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Skill/SkillGunner/SkillGunnerShift.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/MyRoguelike/Core/MyGameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/MyRoguelike/Core/MyGameInstance.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,6 +203,11 @@
       <workItem from="1688452574891" duration="8000000" />
       <workItem from="1688461126281" duration="6453000" />
       <workItem from="1688531677570" duration="1260000" />
+      <workItem from="1688605914699" duration="4273000" />
+      <workItem from="1688693659003" duration="1927000" />
+      <workItem from="1688697540184" duration="1501000" />
+      <workItem from="1689071064146" duration="420000" />
+      <workItem from="1689302344148" duration="153000" />
     </task>
     <servers />
   </component>
